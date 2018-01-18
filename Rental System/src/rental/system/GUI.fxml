@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="rental.system.GUIController">
-    <children>
-        <Button fx:id="button" layoutX="115.0" layoutY="20.0" onAction="#handleButtonAction" text="Click Me!" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-    </children>
+<AnchorPane id="Login" prefHeight="482.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.GUIController">
+   <children>
+      <AnchorPane layoutX="312.0" layoutY="82.0" prefHeight="319.0" prefWidth="349.0" style="-fx-background-color: grey;">
+         <children>
+            <JFXTextField focusColor="#6b5353" layoutX="40.0" layoutY="84.0" prefHeight="26.0" prefWidth="294.0" promptText="Email/Username" unFocusColor="#c61212" />
+            <JFXPasswordField focusColor="#b91626" layoutX="40.0" layoutY="147.0" prefHeight="26.0" prefWidth="294.0" promptText="Password" unFocusColor="#d70909" />
+            <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="215.0" prefHeight="26.0" prefWidth="294.0" text="Submit" />
+            <Label layoutX="129.0" layoutY="35.0" prefHeight="26.0" prefWidth="74.0" text="SignIn">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Hyperlink layoutX="110.0" layoutY="259.0" text="Forgot Password?" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
