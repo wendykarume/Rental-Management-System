@@ -1,22 +1,24 @@
 package rental.system.uicontrollers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-public class Welcome{
 
-    Signup signup = new Signup();
-    Login login = new Login();
+
+public class Welcome{
+    
+    ProviderWelcome provider = new ProviderWelcome();
+    UserWelcome user = new UserWelcome();
     
     @FXML
-    private void signup(ActionEvent event){
+    private void provider(){
 
-        signup.signup();
+        provider.show();
         
     }
+    
     @FXML
-    private void login(ActionEvent event){
+    private void user(){
         
-        login.login();
+        user.show();
         
     }
 
