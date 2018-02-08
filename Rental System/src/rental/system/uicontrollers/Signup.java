@@ -1,32 +1,16 @@
 package rental.system.uicontrollers;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
 
 
 
-public class Signup extends Application {
+public class Signup{
     
-    @Override
-    public void start(Stage primaryStage){
+    @FXML
+    private void getDetails(ActionEvent event){
         
-        try {
-            FXMLLoader loader = new FXMLLoader(); 
-            loader.setLocation(getClass().getResource("/rental/system/ui/signup.fxml"));
-            Parent root =loader.load();
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            primaryStage.setTitle("Signup | Rental Management System");
-        } catch (IOException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("Max The Great");
         
     }
     
