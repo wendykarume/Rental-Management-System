@@ -17,8 +17,8 @@ public class Controllers extends Application {
         try {
             // Welcome
             FXMLLoader welcome = new FXMLLoader(); // obj to load fxml
-            welcome.setLocation(getClass().getResource("/rental/system/ui/welcome.fxml"));
-            
+            welcome.setLocation(getClass().
+                    getResource("/rental/system/ui/welcome.fxml"));
             Parent root = welcome.load(); // defining root as the welcome
             Scene scene = new Scene(root);
             stage.setScene(scene);// setting the scene
@@ -26,7 +26,8 @@ public class Controllers extends Application {
             stage.setTitle("Mandy | Rental Management System");
 
         } catch (IOException ex) {
-            Logger.getLogger(Controllers.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Controllers.class.getName()).
+                    log(Level.SEVERE, null, ex);
             // catching exception if fxml not found
         }
         
