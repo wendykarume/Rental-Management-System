@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import rental.system.Controller;
 
-public class ViewHouseUser {
+public class ViewHouseProvider{
 
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
@@ -18,12 +18,12 @@ public class ViewHouseUser {
     
     try {
             loader.setLocation(getClass().
-                    getResource("/rental/system/ui/viewhouseuser.fxml"));
+                    getResource("/rental/system/ui/viewhouseprovider.fxml"));
             // getting the location
             Parent root = loader.load(); // defining root as the Parent
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);// setting the scene
-            primaryStage.setTitle("View Houses ~ User | Rental Management System");
+            primaryStage.setTitle("View Houses ~ Provider | Rental Management System");
             // setting the title
             primaryStage.show(); // displaying the window
             
