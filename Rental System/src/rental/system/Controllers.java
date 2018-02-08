@@ -12,20 +12,22 @@ import javafx.stage.Stage;
 public class Controllers extends Application {
     // subclassing Application in order to use its methods
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage stage){
         // overriding in Application to utilise its functionality
         try {
-            FXMLLoader loader = new FXMLLoader(); // obj to load fxml
-            loader.setLocation(getClass().getResource(""
-                    + "/rental/system/ui/welcome.fxml"));
-            // getting the location
-            Parent root = loader.load(); // defining root as the Parent
+            // Welcome
+            FXMLLoader welcome = new FXMLLoader(); // obj to load fxml
+            welcome.setLocation(getClass().getResource("/rental/system/ui/welcome.fxml"));
+            
+            Parent root = welcome.load(); // defining root as the welcome
             Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            primaryStage.setTitle("Mandy | Rental Management System");
+            stage.setScene(scene);// setting the scene
+            stage.show(); // displaying the window
+            stage.setTitle("Mandy | Rental Management System");
+
         } catch (IOException ex) {
             Logger.getLogger(Controllers.class.getName()).log(Level.SEVERE, null, ex);
+            // catching exception if fxml not found
         }
         
     }
