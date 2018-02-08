@@ -12,22 +12,22 @@
             <Font name="Corbel" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="218.0" layoutY="105.0" prefHeight="52.0" prefWidth="164.0" text="Manage Houses?">
+      <Label layoutX="367.0" layoutY="148.0" prefHeight="52.0" prefWidth="164.0" text="Manage Houses?">
          <font>
             <Font name="Corbel" size="22.0" />
          </font>
       </Label>
-      <Label layoutX="235.0" layoutY="180.0" prefHeight="52.0" prefWidth="130.0" text="Find Houses?">
+      <Label layoutX="86.0" layoutY="148.0" prefHeight="52.0" prefWidth="130.0" text="Find Houses?">
          <font>
             <Font name="Corbel" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="400.0" layoutY="276.0" mnemonicParsing="false" onAction="#signup" prefHeight="33.0" prefWidth="98.0" text="Signup">
+      <Button layoutX="367.0" layoutY="276.0" mnemonicParsing="false" onAction="#provider" prefHeight="33.0" prefWidth="164.0" text="Proceed as Provider">
          <font>
             <Font name="Corbel" size="17.0" />
          </font>
       </Button>
-      <Button layoutX="83.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="33.0" prefWidth="98.0" text="Login">
+      <Button layoutX="76.0" layoutY="276.0" mnemonicParsing="false" onAction="#user" prefHeight="33.0" prefWidth="164.0" text="Proceed as User">
          <font>
             <Font name="Corbel" size="17.0" />
          </font>
