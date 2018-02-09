@@ -56,39 +56,7 @@ public class NewClass {
       stmt.executeUpdate(src);
       System.out.println("Created table in given database...");
       
-      //STEP 4: Execute a query
-      System.out.println("Inserting records into the table PROVIDERS");
-      stmt = conn.createStatement();
-      
-  String sbs = "INSERT INTO Providers (firstname,lastname, email,password) VALUES (?, ?, ?, ?), (firstname,lastname,email,password)";
- 
-PreparedStatement statement = conn.prepareStatement(sql);
-statement.setString(1, "Wendy");
-statement.setString(2, "Karume");
-statement.setString(3, "wendywambui3@gmail.com");
-statement.setString(4, "Spongebob");
- 
-int rowsInserted = statement.executeUpdate();
-if (rowsInserted > 0) {
-    System.out.println("A new provider was inserted successfully!");
-}
-int count = 0;
- 
-
- 
-   String sbm = "UPDATE providers firstname=?, lastname=?, email=?, password=? WHERE username=?";
- 
-
-statement.setString(1, "Wendy");
-statement.setString(2, "Karume");
-statement.setString(3, "wendywambui3@gmail.com");
-statement.setString(4, "Spongebob");
- 
-int rowsUpdated = statement.executeUpdate();
-if (rowsUpdated > 0) {
-    System.out.println("An existing user was updated successfully!");
-}
-      
+    
       
    }catch(SQLException se){
       //Handle errors for JDBC
