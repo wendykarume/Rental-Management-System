@@ -26,7 +26,7 @@ public class NewClass {
       System.out.println("Creating table in given database...");
       stmt = conn.createStatement();
       
-      String sql = "CREATE TABLE CLIENTS " +
+      String sql = "CREATE TABLE IF NOT EXISTS CLIENTS " +
                    "(id INTEGER not NULL, " +
                    " firstname VARCHAR(255), " + 
                    " lastname VARCHAR(255), " + 
@@ -36,7 +36,7 @@ public class NewClass {
       stmt.executeUpdate(sql);
       System.out.println("Created table in given database...");
       
-      String std = "CREATE TABLE PROVIDERS " +
+      String std = "CREATE TABLE IF NOT EXISTS PROVIDERS " +
                    "(id INTEGER not NULL, " +
                    " firstname VARCHAR(255), " + 
                    " lastname VARCHAR(255), " + 
@@ -46,7 +46,7 @@ public class NewClass {
 
       stmt.executeUpdate(std);
       System.out.println("Created table in given database...");
-      String src = "CREATE TABLE HOUSES " +
+      String src = "CREATE TABLE IF NOT EXISTS HOUSES " +
                    "(id INTEGER not NULL, " +
                    " type TEXT, " + 
                    " location TEXT, " + 
