@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.ViewHouseProvider">
-    
+<AnchorPane fx:id="houseview" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.ViewHouseProvider">
+   <children>
+      <TableView layoutY="65.0" prefHeight="270.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="house_type_col" prefWidth="84.0" text="House Type" />
+          <TableColumn fx:id="house_location_col" prefWidth="116.0" text="House Location" />
+          <TableColumn fx:id="house_price_col" prefWidth="81.0" text="House Price" />
+          <TableColumn fx:id="house_status_col" prefWidth="108.0" text="House Status" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
