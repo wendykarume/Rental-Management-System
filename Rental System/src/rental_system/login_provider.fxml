@@ -12,7 +12,7 @@
    <children>
       <AnchorPane layoutX="312.0" layoutY="82.0" prefHeight="319.0" prefWidth="349.0" style="-fx-background-color: grey;">
          <children>
-            <JFXTextField focusColor="#6b5353" layoutX="40.0" layoutY="84.0" prefHeight="26.0" prefWidth="294.0" promptText="Email/Username" unFocusColor="#c61212" />
+            <JFXTextField focusColor="#6b5353" layoutX="40.0" layoutY="84.0" prefHeight="26.0" prefWidth="294.0" promptText="Email" unFocusColor="#c61212" />
             <JFXPasswordField focusColor="#b91626" layoutX="40.0" layoutY="147.0" prefHeight="26.0" prefWidth="294.0" promptText="Password" unFocusColor="#d70909" />
             <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="215.0" prefHeight="26.0" prefWidth="294.0" text="Submit" />
             <Label layoutX="129.0" layoutY="35.0" prefHeight="26.0" prefWidth="74.0" text="SignIn">

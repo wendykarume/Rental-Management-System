@@ -8,19 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="Login" prefHeight="482.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.GUIController">
+<AnchorPane id="Login" prefHeight="482.0" prefWidth="731.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sys.Controller">
    <children>
-      <AnchorPane layoutX="312.0" layoutY="82.0" prefHeight="319.0" prefWidth="349.0" style="-fx-background-color: grey;">
+      <AnchorPane layoutX="372.0" layoutY="12.0" prefHeight="460.0" prefWidth="349.0" style="-fx-background-color: grey;">
          <children>
-            <JFXTextField focusColor="#6b5353" layoutX="40.0" layoutY="84.0" prefHeight="26.0" prefWidth="294.0" promptText="Email/Username" unFocusColor="#c61212" />
-            <JFXPasswordField focusColor="#b91626" layoutX="40.0" layoutY="147.0" prefHeight="26.0" prefWidth="294.0" promptText="Password" unFocusColor="#d70909" />
-            <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="215.0" prefHeight="26.0" prefWidth="294.0" text="Submit" />
-            <Label layoutX="129.0" layoutY="35.0" prefHeight="26.0" prefWidth="74.0" text="SignIn">
+            <JFXTextField focusColor="#6b5353" layoutX="31.0" layoutY="56.0" prefHeight="26.0" prefWidth="294.0" promptText="First Name" unFocusColor="#c61212" />
+            <JFXPasswordField focusColor="#b91626" layoutX="29.0" layoutY="233.0" prefHeight="26.0" prefWidth="294.0" promptText="Password" unFocusColor="#d70909" />
+            <JFXButton buttonType="RAISED" layoutX="30.0" layoutY="373.0" prefHeight="26.0" prefWidth="294.0" text="Submit" />
+            <Label layoutX="129.0" layoutY="18.0" prefHeight="26.0" prefWidth="74.0" text="SignUp">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Hyperlink layoutX="110.0" layoutY="259.0" text="Forgot Password?" />
+            <Hyperlink layoutX="117.0" layoutY="407.0" text="Forgot Password?" />
+            <JFXTextField focusColor="#6b5353" layoutX="31.0" layoutY="111.0" prefHeight="26.0" prefWidth="294.0" promptText="Last Name" unFocusColor="#c61212" />
+            <JFXTextField focusColor="#6b5353" layoutX="31.0" layoutY="170.0" prefHeight="26.0" prefWidth="294.0" promptText="Email" unFocusColor="#c61212" />
+            <JFXPasswordField focusColor="#3b3d43" layoutX="29.0" layoutY="306.0" prefHeight="26.0" prefWidth="294.0" promptText="Confirm Password" unFocusColor="#c92a2a" />
          </children>
       </AnchorPane>
    </children>
