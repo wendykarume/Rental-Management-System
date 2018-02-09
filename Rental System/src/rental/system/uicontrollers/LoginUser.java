@@ -35,14 +35,13 @@ public class LoginUser{
 
         }
     
-    @FXML
-    private void getDetails(ActionEvent event){
+    @FXML private void getDetails(ActionEvent event){
         
         System.out.println("Max The Great");
         
     }
     
-    public void close(){
+    @FXML public void close(){
         
         primaryStage.close();
         

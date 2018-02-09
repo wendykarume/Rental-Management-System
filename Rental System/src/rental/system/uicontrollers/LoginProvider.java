@@ -3,7 +3,6 @@ package rental.system.uicontrollers;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +14,8 @@ public class LoginProvider{
 
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
+    
+    ProviderDash dash = new ProviderDash();
     
     public void show(){
 
@@ -35,14 +36,13 @@ public class LoginProvider{
 
         }
     
-    @FXML
-    private void getDetails(ActionEvent event){
+    @FXML private void toDash(){
         
-        // code
+        dash.show();
         
     }
     
-    public void close(){
+    @FXML public void close(){
         
         primaryStage.close();
         

@@ -8,15 +8,13 @@ public class Welcome{
     ProviderWelcome provider = new ProviderWelcome();
     UserWelcome user = new UserWelcome();
     
-    @FXML
-    private void provider(){
+    @FXML private void provider(){
 
         provider.show();
         
     }
     
-    @FXML
-    private void user(){
+    @FXML private void user(){
         
         user.show();
         

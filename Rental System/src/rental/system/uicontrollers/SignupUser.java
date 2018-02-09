@@ -15,21 +15,15 @@ import rental.system.Controller;
 
 public class SignupUser{
     
-    @FXML
-    private TextField first_name;
+    @FXML private TextField first_name;
     
-    @FXML
-    private TextField last_name;
+    @FXML private TextField last_name;
     
-    @FXML
-    private TextField email;
+    @FXML private TextField email;
     
-    @FXML
-    private PasswordField pass;
+    @FXML private PasswordField pass;
     
-    @FXML
-    private PasswordField confirm;
-    
+    @FXML private PasswordField confirm;
     
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
@@ -56,8 +50,7 @@ public class SignupUser{
     
     
     
-    @FXML
-    private void getDetails(ActionEvent event){       
+    @FXML private void getDetails(ActionEvent event){       
         
         System.out.println(first_name.getText());
         System.out.println(last_name.getText());

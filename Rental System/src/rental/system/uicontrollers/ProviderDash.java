@@ -10,25 +10,29 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import rental.system.Controller;
 
-public class ProviderWelcome{
-   
-    LoginProvider login = new LoginProvider();
-    SignupProvider signup = new SignupProvider();
+/**
+ * FXML Controller class
+ *
+ * @author karume wendy
+ */
+public class ProviderDash{    
     
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
+    
+    ViewHouseProvider view = new ViewHouseProvider();
     
     public void show(){
 
         try {
                 loader.setLocation(getClass().getResource(""
-                        + "/rental/system/ui/providerwelcome.fxml"));
+                        + "/rental/system/ui/providerdash.fxml"));
                 // getting the location
                 Parent root = loader.load(); // defining root as the Parent
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);// setting the scene
                 primaryStage.show(); // displaying the window
-                primaryStage.setTitle("Welcome ~ Provider | Rental Management System");
+                primaryStage.setTitle("Dash ~ Provider | Rental Management System");
                 // setting the title
             } catch (IOException ex) {
                 Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
@@ -37,15 +41,9 @@ public class ProviderWelcome{
 
         }
     
-    @FXML public void login(){
+    public void viewHouses(){
         
-        login.show();
-        
-    }
-    
-    @FXML public void signup(){
-        
-        signup.show();
+        view.show();
         
     }
     
