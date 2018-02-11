@@ -26,38 +26,21 @@ public class User {
       System.out.println("Creating table in given database...");
       stmt = conn.createStatement();
       
-      String sql = "CREATE TABLE CLIENTS " +
-                   "(id INTEGER not NULL, " +
-                   " firstname VARCHAR(255), " + 
-                   " lastname VARCHAR(255), " + 
-                   " email VARCHAR(255), " +
-                   "providers VARCHAR(255),"+
-                   " PRIMARY KEY ( id ))";
-      stmt.executeUpdate(sql);
-      System.out.println("Created table in given database...");
+      String sql;
+      sql = "CREATE TABLE Users(UserID INTEGER not NULL AUTOINCREMENT, " +
+                   " FirstName TEXT(255), LastName TEXT(255), " + 
+                   " Email VARCHAR(255), Password VARCHAR(255),"+
+                   " PRIMARY KEY ( UserID ))";
+       System.out.println("Created table in given database...");
       
-      String std = "CREATE TABLE PROVIDERS " +
-                   "(id INTEGER not NULL, " +
-                   " firstname VARCHAR(255), " + 
-                   " lastname VARCHAR(255), " + 
-                   " email VARCHAR(255), "+
-                   "providers VARCHAR(255),"+
-                   " PRIMARY KEY ( id ))"; 
-
-      stmt.executeUpdate(std);
-      System.out.println("Created table in given database...");
-      String src = "CREATE TABLE HOUSES " +
-                   "(id INTEGER not NULL, " +
-                   " type TEXT, " + 
-                   " location TEXT, " + 
-                   " price INTEGER not NULL," +
-                   " PRIMARY KEY ( id ))"; 
-
-      stmt.executeUpdate(src);
-      System.out.println("Created table in given database...");
+      Public void insert(String FirstName,String LastName,Char Email,Char Password,Integer UserID){
+       
+      String std = "INSERT INTO Users (FirstName, LastName, Password, email,UserID) VALUES (?, ?, ?, ?,?)";
+   }
       
+
     
-      
+     
    }catch(SQLException se){
       //Handle errors for JDBC
       se.printStackTrace();
