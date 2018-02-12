@@ -10,17 +10,14 @@ public class User {
    static final String USER = "test";
    static final String PASS = "R3ntal_Syst3m";
    
-   public static void main(String[] args) {
+   public static void create() {
    Connection conn = null;
    Statement stmt = null;
    try{
-      //STEP 2: Register JDBC driver
       Class.forName("com.mysql.jdbc.Driver");
-
-      //STEP 3: Open a connection
       System.out.println("Connecting to a given database...");
       conn = DriverManager.getConnection(DB_URL, USER, PASS);
-      System.out.println("Connected database successfully...");
+      
       
       //STEP 4: Execute a query
       System.out.println("Creating table in given database...");
