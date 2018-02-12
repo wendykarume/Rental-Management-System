@@ -1,26 +1,11 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/karume%20wendy/Documents/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/ProviderDash.java</file>
-            <file>file:/C:/Users/karume%20wendy/Documents/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/ViewHouseProvider.java</file>
-            <file>file:/C:/Users/karume%20wendy/Documents/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/ui/providerdash.fxml</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/House.java</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/User.java</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/Provider.java</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental_system/RentalSystem.java</file>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental_system/models.java</file>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental_system/Controller.java</file>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental_system/NewClass.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> 228f75b4394977d3df15b2829fc63df3f5527222
