@@ -31,16 +31,7 @@ public class User {
                    " FirstName TEXT(255), LastName TEXT(255), " + 
                    " Email VARCHAR(255), Password VARCHAR(255),"+
                    " PRIMARY KEY ( UserID ))";
-       System.out.println("Created table in given database...");
-      
-      Public void insert(String FirstName,String LastName,Char Email,Char Password,Integer UserID){
-       
-      String std = "INSERT INTO Users (FirstName, LastName, Password, email,UserID) VALUES (?, ?, ?, ?,?)";
-   }
-      
-
-    
-     
+       System.out.println("Created table in given database...");   
    }catch(SQLException se){
       //Handle errors for JDBC
       se.printStackTrace();
@@ -63,4 +54,26 @@ public class User {
    }//end try
    System.out.println("Goodbye!");
 }//end main
+   
+   public void insert(String FirstName,String LastName,String Email,String Password,Integer UserID){
+       
+      String std = "INSERT INTO Users (FirstName, LastName, Password, email,UserID) VALUES (?, ?, ?, ?,?)";
+   }
+   
+      System.out.println("Creating statement...");
+      stmt = conn.createStatement();
+      String sql;
+      sql = "SELECT UsersID, FirstName, LastName, Email,Password FROM Users";
+      ResultSet rs = stmt.executeQuery(sql);
+
+      
+      while(rs.next()){
+         //Retrieve by column name
+         int UsersID  = rs.getInt("UsersID");
+         String Email = rs.getInt("Email");
+         String FirstName = rs.getString("FirstName");
+         String LastName = rs.getString("LastName");
+         String Password = rs.getString("Paswsword");
+
+         
 }//end JDBCExample
