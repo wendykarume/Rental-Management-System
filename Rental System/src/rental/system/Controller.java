@@ -11,16 +11,15 @@ import javafx.stage.Stage;
 // necessary imports
 public class Controller extends Application {
     // subclassing Application in order to use its methods
+    FXMLLoader load = new FXMLLoader();
     
     @Override
     public void start(Stage stage){
         // overriding in Application to utilise its functionality
         try {
             // Welcome
-            FXMLLoader welcome = new FXMLLoader(); // obj to load fxml
-            welcome.setLocation(getClass().
-                    getResource("/rental/system/ui/welcome.fxml"));
-            Parent root = welcome.load(); // defining root as the welcome
+            load.setLocation(getClass().getResource("/rental/system/ui/welcome.fxml"));
+            Parent root = load.load(); // defining root as the welcome
             Scene scene = new Scene(root);
             stage.setScene(scene);// setting the scene
             stage.show(); // displaying the window
@@ -31,12 +30,6 @@ public class Controller extends Application {
                     log(Level.SEVERE, null, ex);
             // catching exception if fxml not found
         }
-        
-    }
-    
-    public void close(){
-        
-        //code
         
     }
     

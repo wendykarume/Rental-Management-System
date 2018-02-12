@@ -2,21 +2,20 @@ package rental.system.uicontrollers;
 
 import javafx.fxml.FXML;
 
-
 public class Welcome{
     
-    ProviderWelcome provider = new ProviderWelcome();
-    UserWelcome user = new UserWelcome();
+    Signup signup = new Signup();
+    Login login = new Login();
     
-    @FXML private void provider(){
+    @FXML private void signup(){
 
-        provider.show();
+        signup.show();
         
     }
     
-    @FXML private void user(){
+    @FXML private void login(){
         
-        user.show();
+        login.show();
         
     }
 

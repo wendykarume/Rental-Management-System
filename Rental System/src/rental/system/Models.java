@@ -8,7 +8,7 @@ public class Models {
 
    //  Database credentials
    static final String USER = "test";
-   static final String PASS = "R3ntal_Syst3m";
+   static final String PASS = "test";
    
    public static void main(String[] args) {
    Connection conn = null;
@@ -25,7 +25,7 @@ public class Models {
       System.out.println("Creating database...");
       stmt = conn.createStatement();
       
-      String sql = "CREATE DATABASE HOUSE_RENTAL_SYSTEM";
+      String sql = "SHOW DATABASES";
       stmt.executeUpdate(sql);
       System.out.println("Database created successfully...");
    }catch(SQLException se){
