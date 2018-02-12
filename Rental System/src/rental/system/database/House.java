@@ -10,6 +10,8 @@ public class House {
    static final String USER = "test";
    static final String PASS = "R3ntal_Syst3m";
    
+   
+   
    public static void main(String[] args) {
    Connection conn = null;
    Statement stmt = null;
