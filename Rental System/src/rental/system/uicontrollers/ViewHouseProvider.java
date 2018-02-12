@@ -15,7 +15,6 @@ import java.net.URL;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import rental.system.Controller;
 
 public class ViewHouseProvider implements Initializable{
     
@@ -64,7 +63,7 @@ public class ViewHouseProvider implements Initializable{
             primaryStage.show(); // displaying the window
             
         } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewHouseProvider.class.getName()).log(Level.SEVERE, null, ex);
             // catching exception if fxml not found
         }
     

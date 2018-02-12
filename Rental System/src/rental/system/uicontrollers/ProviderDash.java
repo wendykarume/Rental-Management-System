@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import rental.system.Controller;
 
 /**
  * FXML Controller class
@@ -19,6 +18,7 @@ public class ProviderDash{
     
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
+    AddHouse add = new AddHouse();
     
     ViewHouseProvider view = new ViewHouseProvider();
     
@@ -34,16 +34,22 @@ public class ProviderDash{
                 primaryStage.show(); // displaying the window
                 primaryStage.setTitle("Dash ~ Provider | Rental Management System");
                 // setting the title
-            } catch (IOException ex) {
-                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+                Logger.getLogger(ProviderDash.class.getName()).log(Level.SEVERE, null, ex);
                 // catching exception if fxml not found
-            }
+            }        
 
         }
     
     public void viewHouses(){
         
         view.show();
+        
+    }
+    
+    public void addHouses(){
+        
+        add.show();
         
     }
     

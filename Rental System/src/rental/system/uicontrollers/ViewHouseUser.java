@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import rental.system.Controller;
 
 public class ViewHouseUser {
 
@@ -28,7 +27,7 @@ public class ViewHouseUser {
             primaryStage.show(); // displaying the window
             
         } catch (IOException ex) {
-            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ViewHouseUser.class.getName()).log(Level.SEVERE, null, ex);
             // catching exception if fxml not found
         }
     
