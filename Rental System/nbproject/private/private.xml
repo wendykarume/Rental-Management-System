@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/House.java</file>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/User.java</file>
-            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/Provider.java</file>
-        </group>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -18,11 +5,13 @@
         <group>
             <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Welcome.java</file>
             <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Signup.java</file>
+            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/UserView.java</file>
             <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Alert.java</file>
             <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/Controller.java</file>
             <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Login.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/ui/welcome.fxml</file>
+            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/House.java</file>
+            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/User.java</file>
+            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/database/Provider.java</file>
         </group>
     </open-files>
 </project-private>
->>>>>>> 2312ffe4ecff60161dc753152f4ea7222b021ba6

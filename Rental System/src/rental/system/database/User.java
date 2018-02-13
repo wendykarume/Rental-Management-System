@@ -57,20 +57,4 @@ public class User {
       String std = "INSERT INTO Users (FirstName, LastName, Password, email,UserID) VALUES (?, ?, ?, ?,?)";
    }
    
-      System.out.println("Creating statement...");
-      stmt = conn.createStatement();
-      String sql;
-      sql = "SELECT UsersID, FirstName, LastName, Email,Password FROM Users";
-      ResultSet rs = stmt.executeQuery(sql);
-
-      
-      while(rs.next()){
-         //Retrieve by column name
-         int UsersID  = rs.getInt("UsersID");
-         String Email = rs.getInt("Email");
-         String FirstName = rs.getString("FirstName");
-         String LastName = rs.getString("LastName");
-         String Password = rs.getString("Paswsword");
-
-         
-}//end JDBCExample
+    

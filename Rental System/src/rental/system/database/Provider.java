@@ -27,9 +27,9 @@ public class Provider {
       stmt = conn.createStatement();
       
       String sql;
-      sql = "CREATE TABLE Providers(ProviderID INTEGER not NULL AUTOINCREMENT, " +
-                   " FirstName TEXT(255), LastName TEXT(255), " + 
-                   " Email VARCHAR(255), Password VARCHAR(255),"+
+      sql = "CREATE TABLE Providers(ProviderID INTEGER  AUTOINCREMENT, " +
+                   " FirstName TEXT(45), LastName TEXT(45), " + 
+                   " Email VARCHAR(75), Password VARCHAR(45),"+
                    " PRIMARY KEY ( ProviderID ))";
       
       stmt.executeUpdate(sql);
@@ -60,3 +60,4 @@ public class Provider {
    System.out.println("Goodbye!");
 }//end main
 }//end JDBCExample
+public static void INSERT INTO USERS
