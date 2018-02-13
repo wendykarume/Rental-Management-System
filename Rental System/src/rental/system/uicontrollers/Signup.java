@@ -1,6 +1,7 @@
 package rental.system.uicontrollers;
 
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -10,8 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import rental.system.database.Provider;
+import rental.system.database.User;
 
 public class Signup{
+    
+    Alert alert = new Alert();
 
     @FXML private JFXTextField first_name;
     
@@ -23,9 +28,12 @@ public class Signup{
     
     @FXML private JFXPasswordField confirm;
     
+    @FXML JFXRadioButton userbutton;
+    
+    @FXML JFXRadioButton providerbutton;
+    
     Stage signup = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
-    
     
     public void show(){
     
@@ -49,12 +57,35 @@ public class Signup{
     
     @FXML private void toDash(){
         
-        System.out.println(first_name.getText());
-        System.out.println(last_name.getText());
-        System.out.println(email.getText());
-        System.out.println(password.getLength());
-        System.out.println(confirm.getText());
-        
-    }
+        if (!userbutton.isSelected() || !providerbutton.isSelected() || 
+                (first_name.getLength() == 0) || (last_name.getLength() == 0)
+                || (email.getLength() == 0) || (password.getLength() == 0) || 
+                (confirm.getLength() == 0)){
+            // make sure fields are not empty
+                alert.display("Invalid", "Choose User or Provider!");
+            
+        }
+        else{
+            
+            if (userbutton.isSelected()){
+                //to validate from database
+                User user = new User();
+                user.create();
+                UserDash userdash = new UserDash();
+                userdash.show();
+                
+            }
+            
+            else{
+                //tovalidate from database
+                Provider provider = new Provider();
+                provider.create();
+                ProviderDash providerdash = new ProviderDash();
+                providerdash.show();
+                
+            }
+            
+        }
     
+    }
 }

@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Welcome">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Welcome">
    <children>
       <AnchorPane layoutX="14.0" layoutY="18.0" prefHeight="365.0" prefWidth="573.0" style="-fx-background-color: grey;">
          <children>
-            <Label layoutX="110.0" layoutY="29.0" prefHeight="40.0" prefWidth="385.0" text="Mandy Rental Management System" textFill="#ae2323">
+            <Label layoutX="57.0" layoutY="29.0" prefHeight="40.0" prefWidth="459.0" text="Mandy Rental Management System" textFill="#ae2323">
                <font>
                   <Font name="Corbel" size="25.0" />
                </font>

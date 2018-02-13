@@ -10,51 +10,75 @@ public class User {
    static final String USER = "test";
    static final String PASS = "R3ntal_Syst3m";
    
-   public static void create() {
-   Connection conn = null;
-   Statement stmt = null;
-   try{
-      Class.forName("com.mysql.jdbc.Driver");
-      System.out.println("Connecting to a given database...");
-      conn = DriverManager.getConnection(DB_URL, USER, PASS);
-      
-      
-      //STEP 4: Execute a query
-      System.out.println("Creating table in given database...");
-      stmt = conn.createStatement();
-      
-      String sql;
-      sql = "CREATE TABLE Users(UserID INTEGER not NULL AUTOINCREMENT, " +
-                   " FirstName TEXT(255), LastName TEXT(255), " + 
-                   " Email VARCHAR(255), Password VARCHAR(255),"+
-                   " PRIMARY KEY ( UserID ))";
-       System.out.println("Created table in given database...");   
-   }catch(SQLException se){
-      //Handle errors for JDBC
-      se.printStackTrace();
-   }catch(Exception e){
-      //Handle errors for Class.forName
-      e.printStackTrace();
-   }finally{
-      //finally block used to close resources
-      try{
-         if(stmt!=null)
-            conn.close();
-      }catch(SQLException se){
-      }// do nothing
-      try{
-         if(conn!=null)
-            conn.close();
-      }catch(SQLException se){
-         se.printStackTrace();
-      }//end finally try
-   }//end try
-   System.out.println("Goodbye!");
-}//end main
-   
-   public void insert(String FirstName,String LastName,String Email,String Password,Integer UserID){
+   public void create(){
        
-      String std = "INSERT INTO Users (FirstName, LastName, Password, email,UserID) VALUES (?, ?, ?, ?,?)";
+        Connection conn = null;
+        Statement stmt = null;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+            
+
+            String sql;
+            sql = "CREATE TABLE IF NOT EXISTS User(UserID INTEGER AUTO_INCREMENT, " +
+                        " FirstName TEXT, LastName TEXT, " + 
+                        " Email TEXT, Password TEXT,"+
+                        " PRIMARY KEY(UserID))";
+            stmt.executeUpdate(sql);
+            
+        }catch(SQLException se){
+            
+        
+           se.printStackTrace();
+           
+        }catch(Exception e){
+            
+           e.printStackTrace();
+           
+        }finally{
+            
+           try{
+               
+                if(stmt!=null)
+                    
+                    conn.close();
+                
+           }catch(SQLException se){
+           
+           }
+           try{
+               
+                if(conn!=null)
+                    
+                    conn.close();
+           
+           }catch(SQLException se){
+                
+               se.printStackTrace();
+           
+           }
+        
+        }
+
+    }
+   
+   public void insert(){
+       String sql = "INSERT INTO Users (UserID, FirstName, LastName, password, email)"
+               + " VALUES (?, ?, ?, ?, ?)";
+ 
+       
+       
+       
    }
    
-    
+   public void get(String email, String password){
+       String sql = "SELECT * FROM Users WHERE ((Email = ?) and (Password = ?))"
+               + "(email, password)";
+ 
+       
+       
+       
+   }
+
+}

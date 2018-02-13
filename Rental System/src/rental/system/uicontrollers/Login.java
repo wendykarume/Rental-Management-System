@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import rental.system.database.Provider;
+import rental.system.database.User;
 
 public class Login{
     
@@ -18,15 +20,13 @@ public class Login{
     
     @FXML JFXPasswordField password;
     
-    @FXML JFXRadioButton user;
+    @FXML JFXRadioButton userbutton;
     
-    @FXML JFXRadioButton provider;
+    @FXML JFXRadioButton providerbutton;
 
     Stage login = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
-    ProviderDash providerdash = new ProviderDash();
-    UserDash userdash = new UserDash();
     Alert alert = new Alert();
     
     public void show(){
@@ -49,26 +49,30 @@ public class Login{
         }
     
     @FXML private void toDash(){
+        Provider provider = new Provider();
+        User user = new User();
+        user.create();
+        provider.create();
         
         // Validate from database
-        
-        System.out.println(email.getText());
-        System.out.println(password.getText());
-        if (!user.isSelected() || !provider.isSelected() || (email.getLength() == 0) || (password.getLength() ==0)){
+        if (!userbutton.isSelected() || !providerbutton.isSelected() 
+                || (email.getLength() == 0) || (password.getLength() ==0)){
             // make sure fields are not empty
             alert.display("Invalid", "Choose User or Provider!");
             
         }
         else{
             
-            if (user.isSelected()){
+            if (userbutton.isSelected()){
                 //to validate from database
+                UserDash userdash = new UserDash();
                 userdash.show();
                 
             }
             
             else{
                 //tovalidate from database
+                ProviderDash providerdash = new ProviderDash();
                 providerdash.show();
                 
             }
