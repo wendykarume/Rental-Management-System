@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Signup">
+<fx:root type="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Signup">
    <children>
       <AnchorPane layoutX="16.0" layoutY="19.0" prefHeight="362.0" prefWidth="569.0" style="-fx-background-color: gray;">
          <children>
@@ -55,9 +55,6 @@
                <font>
                   <Font name="Corbel" size="17.0" />
                </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="radiobutton" />
-               </toggleGroup>
             </JFXRadioButton>
             <JFXRadioButton fx:id="providerbutton" layoutX="37.0" layoutY="99.0" prefHeight="31.0" prefWidth="205.0" text="Provider" textFill="#fff312" toggleGroup="$radiobutton">
                <font>
@@ -67,4 +64,4 @@
          </children>
       </AnchorPane>
    </children>
-</AnchorPane>
+</fx:root>

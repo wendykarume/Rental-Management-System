@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Login">
+<fx:root type="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.Login">
    <children>
       <AnchorPane layoutX="16.0" layoutY="19.0" prefHeight="362.0" prefWidth="569.0" style="-fx-background-color: gray;">
          <children>
@@ -30,12 +30,12 @@
             <fx:define>
                 <ToggleGroup fx:id="radiobutton" />
             </fx:define>    
-            <JFXRadioButton fx:id="user" toggleGroup="$radiobutton" layoutX="149.0" layoutY="68.0" prefHeight="31.0" prefWidth="205.0" text="User" textFill="#fff312">
+            <JFXRadioButton fx:id="userbutton" toggleGroup="$radiobutton" layoutX="149.0" layoutY="68.0" prefHeight="31.0" prefWidth="205.0" text="User" textFill="#fff312">
                <font>
                   <Font name="Corbel" size="17.0" />
                </font>
             </JFXRadioButton>
-            <JFXRadioButton fx:id="provider" toggleGroup="$radiobutton" layoutX="149.0" layoutY="111.0" prefHeight="31.0" prefWidth="205.0" text="Provider" textFill="#fff312">
+            <JFXRadioButton fx:id="providerbutton" toggleGroup="$radiobutton" layoutX="149.0" layoutY="111.0" prefHeight="31.0" prefWidth="205.0" text="Provider" textFill="#fff312">
                <font>
                   <Font name="Corbel" size="17.0" />
                </font>
@@ -48,4 +48,4 @@
          </children>
       </AnchorPane>
    </children>
-</AnchorPane>
+</fx:root>
