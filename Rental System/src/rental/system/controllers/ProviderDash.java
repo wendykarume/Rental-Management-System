@@ -1,13 +1,14 @@
-package rental.system.uicontrollers;
+package rental.system.controllers;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * FXML Controller class
@@ -28,8 +29,8 @@ public class ProviderDash{
                 loader.setLocation(getClass().getResource(""
                         + "/rental/system/ui/providerdash.fxml"));
                 // getting the location
-                Parent root = loader.load(); // defining root as the Parent
-                Scene scene = new Scene(root);
+                Parent provider_dash = loader.load(); // defining root as the Parent
+                Scene scene = new Scene(provider_dash);
                 primaryStage.setScene(scene);// setting the scene
                 primaryStage.show(); // displaying the window
                 primaryStage.setTitle("Dash ~ Provider | Rental Management System");

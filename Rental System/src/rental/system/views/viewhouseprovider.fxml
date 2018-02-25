@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root type="AnchorPane" fx:id="houseview" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.ViewHouseProvider">
+<AnchorPane fx:id="houseview" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
    <children>
       <TableView layoutY="65.0" prefHeight="270.0" prefWidth="600.0">
         <columns>
@@ -15,4 +15,4 @@
         </columns>
       </TableView>
    </children>
-</fx:root>
+</AnchorPane>

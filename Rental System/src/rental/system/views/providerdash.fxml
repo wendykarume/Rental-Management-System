@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root type="AnchorPane" id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.uicontrollers.ProviderDash">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
    <children>
       <Button layoutX="102.0" layoutY="118.0" mnemonicParsing="false" onAction="#viewHouses" prefHeight="44.0" prefWidth="99.0" text="View">
          <font>
@@ -23,4 +23,4 @@
          </font>
       </Button>
    </children>
-</fx:root>
+</AnchorPane>
