@@ -21,111 +21,81 @@ import javafx.scene.layout.AnchorPane;
 import rental.system.models.Provider;
 import rental.system.models.User;
 
-public class Signup{
-    /*
+/*
     Class facilitating signup as user or provider
-    */
+*/
+public class Signup{
     
     // FXML Objects to be used
     @FXML private AnchorPane signup;
-    @FXML private JFXTextField first_name;
-    @FXML private JFXTextField last_name;
-    @FXML private JFXTextField email;
-    @FXML private JFXPasswordField password;
-    @FXML private JFXPasswordField confirm;
-    @FXML private JFXRadioButton userbutton;
-    @FXML private JFXRadioButton providerbutton;
+    @FXML private JFXTextField first_name, last_name, email;
+    @FXML private JFXPasswordField password, confirm;
+    @FXML private JFXRadioButton userbutton, providerbutton;
     
     // Database objects
     User user = new User();
     Provider provider = new Provider();
     
-    @FXML private void toDash(){
-        // Private method to dashboard after signup
+    // Private method to dashboard after signup
+    @FXML private void toDash(ActionEvent event){
         
-        // Making sure no field is empty upon submission
-        if (!userbutton.isSelected() || !providerbutton.isSelected() || 
-                (first_name.getLength() == 0) || (last_name.getLength() == 0)
-                || (email.getLength() == 0) || (password.getLength() == 0) || 
-                (confirm.getLength() == 0)){
-            
-                try{
-                // Loading Alert Window
-                AnchorPane pane = FXMLLoader.load(getClass().
-                        getResource("/rental/system/views/alert.fxml"));
-                signup.getChildren().setAll(pane);
-                
-                }catch (IOException e){
-                    // Output exception
-                    Logger.getLogger(Signup.class.getName()).
-                            log(Level.SEVERE, null, e);
+        try{
+            // Making sure no field is empty upon submission
+            if (!userbutton.isSelected() || !providerbutton.isSelected() || 
+                    (first_name.getLength() == 0) || (last_name.getLength() == 0)
+                    || (email.getLength() == 0) || (password.getLength() == 0) || 
+                    (confirm.getLength() == 0)){
 
-                }
-            
-        }else{
-            // Appropriate data insertion to database
-            if (userbutton.isSelected()){
-                //Validate from database
-                /* Code */
-                user.create();
-                
-                try{
+                    // Loading Alert Window
+                    AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/alert.fxml"));
+                    signup.getChildren().setAll(pane);
+
+            }else{
+                // Appropriate data insertion to database
+                if (userbutton.isSelected()){
+                    //Validate from database
+                    /* Code */
+                    user.create();
+                    
                     // Run code and catch exception if there
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
                     signup.getChildren().setAll(pane);
-                    
-                }catch (IOException e){
-                    // Output the exception
-                    Logger.getLogger(Signup.class.getName()).
-                            log(Level.SEVERE, null, e);
-                    
-                }
-                
-            }
-            
-            else if(providerbutton.isSelected()){
-                // Validate from database
-                /* Code */
-                provider.create();
-                /* Insert to database*/
-                
-                try{
+
+                }else if(providerbutton.isSelected()){
+                    // Validate from database
+                    /* Code */
+                    provider.create();
+                    /* Insert to database*/
+
                     // Catch exception if present
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource
                             ("/rental/system/views/providerdash.fxml"));
                     signup.getChildren().setAll(pane);
-                    
-                }catch (IOException e){
-                    // Output exception
-                    Logger.getLogger(Signup.class.getName()).
-                            log(Level.SEVERE, null, e);
-                }
-                
-            }else{
-            
-                try{
+
+                }else{
                     // Loading Alert Window
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/alert.fxml"));
                     signup.getChildren().setAll(pane);
+                    
+                }
                 
-                }catch (IOException e){
-                    // Output exception
-                    Logger.getLogger(Signup.class.getName()).
-                            log(Level.SEVERE, null, e);
+            }
+                
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(Signup.class.getName()).
+                    log(Level.SEVERE, null, e);
 
                 }
                 
             }
-            
-        }
     
-    }
-    
+    // private method to login if logged in
     @FXML private void login(ActionEvent event){
-        // private method to login if logged in
         
         try{
             // Loading window and catching exception if present

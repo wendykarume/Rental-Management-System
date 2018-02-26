@@ -21,10 +21,10 @@ import javafx.scene.layout.AnchorPane;
 import rental.system.models.Provider;
 import rental.system.models.User;
 
-public class Login {
-    /*
+/*
     Login class that facilitates the login of users and providers
-    */
+*/
+public class Login {
     
     // Dashboard user or provider
     ProviderDash providerdash = new ProviderDash(); 
@@ -38,74 +38,58 @@ public class Login {
     @FXML private AnchorPane login;
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
-    @FXML private JFXRadioButton userbutton;
-    @FXML private JFXRadioButton providerbutton;
+    @FXML private JFXRadioButton userbutton, providerbutton;
     
-    @FXML private void toDash(ActionEvent event) {
-        // Private function that validates and redirects to the right dashboard
-        
+    // Private function that validates and redirects to the right dashboard
+    @FXML private void toDash(ActionEvent event) throws Exception {
+                
         // Database objects to create tables before inserting data
-        provider.create();
-        user.create();
         
-        // Making sure fields are not empty upon submission
-        if (!userbutton.isSelected() || !providerbutton.isSelected() 
-                || (email.getLength() == 0) || (password.getLength() ==0)){
-            
-            try{
+        try{
+            // Making sure fields are not empty upon submission
+            if (!userbutton.isSelected() || !providerbutton.isSelected() 
+                    || (email.getLength() == 0) || (password.getLength() ==0)){
+
                 // Loading Alert Window
                 AnchorPane pane = FXMLLoader.load(getClass().
                         getResource("/rental/system/views/alert.fxml"));
                 login.getChildren().setAll(pane);
-                
-            }catch (IOException e){
-                // Output exception
-                Logger.getLogger(Login.class.getName()).
-                        log(Level.SEVERE, null, e);
 
-            }
-            
-        }else{
-            // Redirect to appropriate dashboard on radiobutton selection
-            if (userbutton.isSelected()){
-                // Validating from database
-                /* Code */
-                try{
+            }else{
+                // Redirect to appropriate dashboard on radiobutton selection
+                if (userbutton.isSelected()){
+                    // Validating from database
+                    /* Code */
+
                     // Run code and catch exception if there
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
                     login.getChildren().setAll(pane);
-                    
-                }catch (IOException e){
-                    // Output the exception
-                    Logger.getLogger(Login.class.getName()).
-                            log(Level.SEVERE, null, e);
-                    
-                }
 
-            }else if(providerbutton.isSelected()){
-                // Validating from database
-                /* Code */
-                try{
+                }else if(providerbutton.isSelected()){
+                    // Validating from database
+                    /* Code */
+
                     // Catch exception if present
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/providerdash.fxml"));
                     login.getChildren().setAll(pane);
                     
-                }catch (IOException e){
-                    // Output exception
-                    Logger.getLogger(Login.class.getName()).
-                            log(Level.SEVERE, null, e);
                 }
                 
             }
-            
+                    
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(Login.class.getName()).
+                    log(Level.SEVERE, null, e);
         }
-            
-    }
+                
+            }
     
+    // Back to signup if user not signed up
     @FXML private void signup(ActionEvent event){
-        // Back to signup if user not signed up
+        
         try{
             // Running code to catch exception
             AnchorPane pane = FXMLLoader.load(getClass().

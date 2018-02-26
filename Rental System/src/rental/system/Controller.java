@@ -16,11 +16,11 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Controller extends Application{
-    /*
+/*
     Controller class inheriting methods from JavaFX Application class by being
     subclassed
-    */
+*/
+public class Controller extends Application{
     
     // Decorator denoting use by FXML
     @FXML private AnchorPane welcome;
@@ -57,8 +57,9 @@ public class Controller extends Application{
         
     }
     
+    //private method that redirects to signup
     @FXML private void signup(ActionEvent event){
-        //private method that redirects to signup
+        
         try{
             // Trying this code before an exception is caught
             AnchorPane pane = FXMLLoader.load(getClass().
@@ -74,8 +75,9 @@ public class Controller extends Application{
         
     }
     
+    // private method that redirects for login
     @FXML private void login(ActionEvent event){
-        // private method that redirects for login
+        
         try{
             // Running code in order to catch an exception if it is there
             AnchorPane pane = FXMLLoader.load(getClass().

@@ -41,7 +41,7 @@
               <Font size="15.0" />
            </font>
         </JFXPasswordField>
-        <JFXButton layoutX="33.0" layoutY="278.0" onAction="#toDash" prefHeight="48.0" prefWidth="184.0" text="Submit" textFill="#025117">
+        <JFXButton layoutX="203.0" layoutY="285.0" onAction="#toDash" prefHeight="48.0" prefWidth="184.0" text="Submit" textFill="#025117">
            <font>
               <Font size="25.0" />
            </font>
@@ -49,20 +49,18 @@
         <fx:define>
             <ToggleGroup fx:id="radiobutton" />
         </fx:define>    
-        <JFXRadioButton fx:id="userbutton" layoutX="37.0" layoutY="68.0" prefHeight="31.0" prefWidth="205.0" text="User" textFill="#fff312" toggleGroup="$radiobutton">
+        <JFXRadioButton fx:id="userbutton" layoutX="37.0" layoutY="68.0" prefHeight="31.0" prefWidth="205.0" text="User" textFill="#fff312">
            <font>
               <Font name="Corbel" size="17.0" />
            </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="radiobutton" />
+         </toggleGroup>
         </JFXRadioButton>
         <JFXRadioButton fx:id="providerbutton" layoutX="37.0" layoutY="99.0" prefHeight="31.0" prefWidth="205.0" text="Provider" textFill="#fff312" toggleGroup="$radiobutton">
            <font>
               <Font name="Corbel" size="17.0" />
            </font>
         </JFXRadioButton>
-        <JFXButton layoutX="355.0" layoutY="277.0" text="Login" textFill="#280d85">
-           <font>
-              <Font size="25.0" />
-           </font>
-        </JFXButton>
      </children>
 </AnchorPane>
