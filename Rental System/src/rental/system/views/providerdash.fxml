@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="provider_dash" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
+<AnchorPane fx:id="provider_dash" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
    <children>
-      <Button layoutX="102.0" layoutY="118.0" mnemonicParsing="false" onAction="#viewHouses" prefHeight="44.0" prefWidth="99.0" text="View">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
       <Label layoutX="180.0" layoutY="41.0" text="Welcome To your DashBoard">
          <font>
             <Font name="Corbel" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="359.0" layoutY="118.0" mnemonicParsing="false" onAction="#addHouses" prefHeight="44.0" prefWidth="99.0" text="Add">
+      <JFXButton buttonType="RAISED" layoutX="174.0" layoutY="150.0" onAction="#viewHouses" text="View">
          <font>
             <Font size="20.0" />
          </font>
-      </Button>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="380.0" layoutY="152.0" onAction="#addHouses" text="Add">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="284.0" layoutY="225.0" onAction="#stats" text="Stats">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.TilePane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.AddHouse">
+<AnchorPane id="add_house" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.AddHouse">
    <children>
       <TextField layoutX="342.0" layoutY="132.0" prefHeight="25.0" prefWidth="212.0" promptText="House Location" />
       <TilePane layoutX="81.0" layoutY="28.0" prefHeight="56.0" prefWidth="261.0" />

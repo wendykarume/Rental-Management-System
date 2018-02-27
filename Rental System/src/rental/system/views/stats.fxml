@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="stats" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="rental.system.controllers.Stats">
+<AnchorPane fx:id="stats" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Stats">
    <children>
-      <Label layoutX="285.0" layoutY="58.0" text="Statistics">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
+      <PieChart fx:id="piechart" layoutX="11.0" layoutY="10.0" prefHeight="479.0" prefWidth="679.0" />
    </children>
 </AnchorPane>
