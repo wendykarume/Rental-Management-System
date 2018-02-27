@@ -18,7 +18,6 @@ public class User {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
-            
 
             String sql;
             sql = "CREATE TABLE IF NOT EXISTS User(UserID INTEGER AUTO_INCREMENT, " +
