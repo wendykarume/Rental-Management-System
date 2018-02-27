@@ -39,8 +39,7 @@ compatible to a Netbeans Development Environment.
 
 2. MySQL JDBC connector jar.
 
-Follow this [tutorial]
-(https://www.tutorialspoint.com/jdbc/jdbc_pdf_version.htm) that will aid in understanding JDBC.
+Follow this [tutorial](https://www.tutorialspoint.com/jdbc/jdbc_pdf_version.htm) that will aid in understanding JDBC.
 
 Various database variables will need to be changed in order to suit your 
 Development Environment.
