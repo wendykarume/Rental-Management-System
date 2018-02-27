@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.image.Image;
 
 /*
     Controller class inheriting methods from JavaFX Application class by being
