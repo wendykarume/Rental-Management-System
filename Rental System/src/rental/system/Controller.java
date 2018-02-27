@@ -1,40 +1,101 @@
+// Class package
 package rental.system;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+// JavaFX imports
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-// necessary imports
-public class Controller extends Application {
-    // subclassing Application in order to use its methods
-    FXMLLoader load = new FXMLLoader();
+import javafx.event.ActionEvent;
+
+// Imports for Exception handling and output
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.image.Image;
+
+/*
+    Controller class inheriting methods from JavaFX Application class by being
+    subclassed
+*/
+public class Controller extends Application{
+    
+    // Decorator denoting use by FXML
+    @FXML private AnchorPane welcome;
     
     @Override
     public void start(Stage stage){
-        // overriding in Application to utilise its functionality
-        try {
-            // Welcome
-            load.setLocation(getClass().getResource("/rental/system/ui/welcome.fxml"));
-            Parent root = load.load(); // defining root as the welcome
+        // Necessary override in Application class
+        
+        try{
+            // Trying accessing fxml, if not found IOException is caught
+            FXMLLoader load = new FXMLLoader();
+            load.setLocation(getClass().
+                    getResource("/rental/system/views/welcome.fxml"));
+            
+            // Defining the root window as welcome.fxml
+            Parent root = load.load();
             Scene scene = new Scene(root);
-            stage.setScene(scene);// setting the scene
-            stage.show(); // displaying the window
+            
+            // Setting the scene
+            stage.setScene(scene);
+            
+            // Displaying the window
+            stage.show();
+            
+            // Setting the title
             stage.setTitle("Mandy | Rental Management System");
 
-        } catch (IOException ex) {
+        }catch (IOException e){
+            // Output exception
             Logger.getLogger(Controller.class.getName()).
-                    log(Level.SEVERE, null, ex);
-            // catching exception if fxml not found
+                    log(Level.SEVERE, null, e);
+            
         }
         
     }
     
-    public static void main(String[] args) {
+    //private method that redirects to signup
+    @FXML private void signup(ActionEvent event){
         
+        try{
+            // Trying this code before an exception is caught
+            AnchorPane pane = FXMLLoader.load(getClass().
+                    getResource("/rental/system/views/signup.fxml"));
+            welcome.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output the exception
+            Logger.getLogger(Controller.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
+    }
+    
+    // private method that redirects for login
+    @FXML private void login(ActionEvent event){
+        
+        try{
+            // Running code in order to catch an exception if it is there
+            AnchorPane pane = FXMLLoader.load(getClass().
+                    getResource("/rental/system/views/login.fxml"));
+            welcome.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(Controller.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
+    }
+    
+    public static void main(String[] args){
+        // Initialising the start method that begins the application
         launch(args);
         
     }

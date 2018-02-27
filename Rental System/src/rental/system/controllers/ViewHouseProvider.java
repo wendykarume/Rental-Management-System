@@ -1,4 +1,4 @@
-package rental.system.uicontrollers;
+package rental.system.controllers;
 
 import java.io.IOException;
 import java.util.ResourceBundle;

@@ -1,4 +1,4 @@
-package rental.system.database;
+package rental.system.models;
 import java.sql.*;
 
 public class House {

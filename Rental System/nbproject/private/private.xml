@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -15,3 +16,19 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Signup.java</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/ui/login.fxml</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/Controller.java</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/ui/signup.fxml</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/ui/welcome.fxml</file>
+            <file>file:/home/maxwell/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/uicontrollers/Login.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> 3458b4ab787e2fcb88ead3f32b6dc7774ca7c057
