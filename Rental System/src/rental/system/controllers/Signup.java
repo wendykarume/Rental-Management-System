@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 
 // Imports for exception handling
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,12 +38,11 @@ public class Signup{
     Provider provider = new Provider();
     
     // Private method to dashboard after signup
-    @FXML private void toDash(ActionEvent event){
+    @FXML private void toDash(ActionEvent event) throws SQLException{
         
         try{
             // Making sure no field is empty upon submission
-            if (!userbutton.isSelected() || !providerbutton.isSelected() || 
-                    (first_name.getLength() == 0) || (last_name.getLength() == 0)
+            if ((first_name.getLength() == 0) || (last_name.getLength() == 0)
                     || (email.getLength() == 0) || (password.getLength() == 0) || 
                     (confirm.getLength() == 0)){
 
@@ -53,21 +53,31 @@ public class Signup{
 
             }else{
                 // Appropriate data insertion to database
-                if (userbutton.isSelected()){
+                if ((userbutton.isSelected()) && (first_name.getLength() > 0) && 
+                        (last_name.getLength() > 0) && (email.getLength() > 0)
+                        && (password.getLength() > 0) &&
+                        (confirm.getLength() > 0)){
                     //Validate from database
                     /* Code */
                     user.create();
+                    user.insert(first_name.getText(), last_name.getText(), 
+                            email.getText(), password.getText());
                     
                     // Run code and catch exception if there
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
                     signup.getChildren().setAll(pane);
 
-                }else if(providerbutton.isSelected()){
+                }else if((providerbutton.isSelected()) && 
+                        (first_name.getLength() > 0) && 
+                        (last_name.getLength() > 0) && (email.getLength() > 0)
+                        && (password.getLength() > 0) &&
+                        (confirm.getLength() > 0)){
                     // Validate from database
                     /* Code */
                     provider.create();
-                    /* Insert to database*/
+                    provider.insert(first_name.getText(), last_name.getText(), 
+                            email.getText(), password.getText());
 
                     // Catch exception if present
                     AnchorPane pane = FXMLLoader.load(getClass().

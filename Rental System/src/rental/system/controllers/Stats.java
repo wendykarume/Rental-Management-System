@@ -9,12 +9,15 @@ import java.util.ResourceBundle;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 // JavaFX imports
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
 
 /*
@@ -23,29 +26,33 @@ import javafx.scene.layout.AnchorPane;
 public class Stats implements Initializable {
     
     // Objects to be used
+    @FXML private PieChart piechart;
     @FXML private AnchorPane stats;
     
-    // Show the statistics
-    @FXML private void showStats(ActionEvent event){
-        
-        try{
-            // Run code and catch exception if there
-            AnchorPane pane = FXMLLoader.load(getClass().
-                    getResource("/rental/system/views/stats.fxml"));
-            stats.getChildren().setAll(pane);
-
-        }catch (IOException e){
-            // Output the exception
-            Logger.getLogger(Stats.class.getName()).
-                    log(Level.SEVERE, null, e);
-
-        }
+    @FXML private void back(ActionEvent event){
         
     }
+    
+    @FXML private void logout(ActionEvent event){
+        
+    }
+    
+    @FXML private void close(ActionEvent event){
+        
+    }
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+        // Get values from database and output
+        ObservableList <PieChart.Data> piechartdata =
+                                                FXCollections.observableArrayList(
+        new PieChart.Data("Executed", 60),
+        new PieChart.Data("Passed", 25),
+        new PieChart.Data("Fails", 15));
+        piechart.setData(piechartdata);
     }    
     
 }

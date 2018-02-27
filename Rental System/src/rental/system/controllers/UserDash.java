@@ -1,57 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+// Class package
 package rental.system.controllers;
 
+// imports for exception handling
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+// JavaFX imports
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
-/**
- *
- * @author karume wendy
- */
+/* 
+    Public class that facilitates various dashboard needs for the user
+*/
 public class UserDash {
     
-    Stage primaryStage = new Stage();
-    FXMLLoader loader = new FXMLLoader(); // obj to load fxml
-    UserView view = new UserView();
+    @FXML private AnchorPane user_dash;
     
-    public void show(){
-
-        try {
-                loader.setLocation(getClass().getResource(""
-                        + "/rental/system/ui/userdash.fxml"));
-                // getting the location
-                Parent user_dash = loader.load(); // defining root as the Parent
-                Scene scene = new Scene(user_dash);
-                primaryStage.setScene(scene);// setting the scene
-                primaryStage.show(); // displaying the window
-                primaryStage.setTitle("Dash ~ User | Rental Management System");
-                // setting the title
-        } catch (IOException ex) {
-                Logger.getLogger(UserDash.class.getName()).log(Level.SEVERE, null, ex);
-                // catching exception if fxml not found
-            }        
-
+    // Private method to view houses as a table
+    @FXML private void viewHouses(ActionEvent event){
+        
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/viewhouseuser.fxml"));
+            user_dash.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(UserDash.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
         }
-    
-    public void viewHouses(){
-        
-        view.show();
-        
-    }
-    
-    @FXML public void close(){
-        
-        primaryStage.close();
         
     }
     
