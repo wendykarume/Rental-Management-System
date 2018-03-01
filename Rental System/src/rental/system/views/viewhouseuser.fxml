@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="view_house_user" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseUser">
-    
+
+<AnchorPane fx:id="view_house_user" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="rental.system.controllers.ViewHouseUser">
+   <children>
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="447.0" onAction="#exit" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>

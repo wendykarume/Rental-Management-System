@@ -4,9 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="alert" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Alert">
+<AnchorPane fx:id="alert" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Alert">
    <children>
-      <JFXButton layoutX="288.0" layoutY="145.0" text="Error">
+      <JFXButton buttonType="RAISED" layoutX="233.0" layoutY="144.0" style="-fx-background-color: red;" text="An error occured, try again" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="302.0" layoutY="250.0" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

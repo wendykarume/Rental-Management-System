@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="provider_dash" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
+<AnchorPane fx:id="provider_dash" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
    <children>
       <Label layoutX="180.0" layoutY="41.0" text="Welcome To your DashBoard">
          <font>
@@ -23,6 +23,11 @@
          </font>
       </JFXButton>
       <JFXButton buttonType="RAISED" layoutX="284.0" layoutY="225.0" onAction="#stats" text="Stats">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="14.0" layoutY="442.0" onAction="#exit" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>

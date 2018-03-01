@@ -1,7 +1,7 @@
-package rental.system.models;
+package rental.system.database;
 import java.sql.*;
 
-public class House {
+public class User {
    // JDBC driver name and database URL
    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
    static final String DB_URL = "jdbc:mysql://localhost/HOUSE_RENTAL_SYSTEM";
@@ -18,19 +18,17 @@ public class House {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             stmt = conn.createStatement();
-            
 
             String sql;
-            sql = "CREATE TABLE IF NOT EXISTS House"
-                    + "(HouseID INTEGER AUTO_INCREMENT, "
-                    + " HouseLocation TEXT, HouseType TEXT, "
-                    + " HousePrice INTEGER, HouseStatus TEXT "
-                    + " PRIMARY KEY(HouseID))";
+            sql = "CREATE TABLE IF NOT EXISTS User(UserID INTEGER AUTO_INCREMENT, " +
+                        " FirstName TEXT, LastName TEXT, " + 
+                        " Email TEXT, Password TEXT,"+
+                        " PRIMARY KEY(UserID))";
             stmt.executeUpdate(sql);
             
         }catch(SQLException se){
             
-          se.printStackTrace();
+           se.printStackTrace();
            
         }catch(Exception e){
             
@@ -64,18 +62,18 @@ public class House {
     }
    
    public void insert(){
-      String sql = "INSERT INTO Houses (HouseID, HouseType, HouseLocation,"
-            + " HouseStatus, HousePrice)"
-            + " VALUES (?, ?, ?, ?, ?)";
-  
+       String sql = "INSERT INTO Users (UserID, FirstName, LastName, password, email)"
+               + " VALUES (?, ?, ?, ?, ?)";
+ 
+       
        
        
    }
-   public void get(String type, String location,Integer price,String status){
-       String sql = "SELECT * FROM Users WHERE ((type = ?) and (location = ?) and (status = ?) and (price = ?))"
-               + "(type, location, status, price)";
+   
+   public void get(String email, String password){
+       String sql = "SELECT * FROM Users WHERE ((Email = ?) and (Password = ?))"
+               + "(email, password)";
  
-  
        
        
        

@@ -5,22 +5,42 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="welcome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.Controller">
+<AnchorPane fx:id="welcome" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.Controller">
    <children>
-            <Label layoutX="127.0" layoutY="42.0" prefHeight="40.0" prefWidth="459.0" text="Mandy Rental Management System" textFill="#ae2323">
+            <Label layoutX="113.0" layoutY="25.0" prefHeight="40.0" prefWidth="459.0" text="House Rental Management System" textFill="#ae2323">
+               <font>
+                  <Font name="Corbel" size="30.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="86.0" layoutY="340.0" onAction="#login" prefHeight="44.0" prefWidth="180.0" ripplerFill="#4217d0" style="-fx-background-color: blue;" text="Login" textFill="WHITE">
                <font>
                   <Font name="Corbel" size="25.0" />
                </font>
-            </Label>
-            <JFXButton buttonType="RAISED" layoutX="113.0" layoutY="204.0" onAction="#login" prefHeight="40.0" prefWidth="99.0" ripplerFill="#4217d0" text="Login">
+            </JFXButton>
+            <JFXButton buttonType="RAISED" layoutX="420.0" layoutY="340.0" onAction="#signup" prefHeight="44.0" prefWidth="180.0" ripplerFill="#4217d0" style="-fx-background-color: green;" text="Signup" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Corbel" size="25.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="434.0" layoutY="204.0" onAction="#signup" prefHeight="40.0" prefWidth="99.0" ripplerFill="#4217d0" text="Signup">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </JFXButton>
+      <Label layoutX="75.0" layoutY="99.0" prefHeight="40.0" prefWidth="517.0" text="Welcome, to Mandy Rental Management System">
+         <font>
+            <Font name="Corbel" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="266.0" layoutY="177.0" prefHeight="40.0" prefWidth="154.0" text="Mandy - RMS" textFill="#683e3e">
+         <font>
+            <Font name="Corbel" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="126.0" layoutY="250.0" prefHeight="40.0" prefWidth="415.0" text="Manage House Rentals and Get Houses!" textFill="#a10e0e">
+         <font>
+            <Font name="Corbel" size="25.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="266.0" layoutY="437.0" onAction="#exit" prefHeight="49.0" prefWidth="154.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font name="Corbel" size="25.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

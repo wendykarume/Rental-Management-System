@@ -36,4 +36,11 @@ public class UserDash {
         
     }
     
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
+    
 }
