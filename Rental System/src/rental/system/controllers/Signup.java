@@ -122,4 +122,11 @@ public class Signup{
         
     }
     
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
+    
 }
