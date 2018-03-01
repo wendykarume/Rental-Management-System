@@ -37,7 +37,10 @@ public class Stats implements Initializable {
         
     }
     
-    @FXML private void close(ActionEvent event){
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
         
     }
     
