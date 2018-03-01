@@ -11,7 +11,7 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="302.0" layoutY="250.0" onAction="#back" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="302.0" layoutY="250.0" prefHeight="44.0" prefWidth="97.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
