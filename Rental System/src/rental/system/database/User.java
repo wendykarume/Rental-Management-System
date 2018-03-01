@@ -28,7 +28,6 @@ public class User {
             
         }catch(SQLException se){
             
-        
            se.printStackTrace();
            
         }catch(Exception e){
