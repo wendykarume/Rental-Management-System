@@ -140,10 +140,63 @@ public class User{
        
    }
    
-   public void get(){
+   public boolean fetch(String email, String password){
        
-       
-       
-   }
+        try{
+            // Catching a connection exception
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
+            // Manually committing data
+            conn.setAutoCommit(false);
+            
+            // Creating a statement to be used while on the connection
+            stmt = conn.createStatement();
+            
+            // Creating statements to be executed
+            String sql = "SELECT Email, Password FROM User";
+            
+            // Creating a resultset
+            ResultSet rs = stmt.executeQuery(sql);
+            
+            String mail = rs.getString("Email");
+            String pass = rs.getString("Password");
+            
+            if ((mail == null ? email == null : mail.equals(email)) && 
+                    (pass == null ? password == null : pass.equals(password))){
+
+                    return true;
+                    
+            }
+                      
+        }catch(SQLException | ClassNotFoundException se){
+            
+            
+        }finally{
+            // Close connection if ...
+            try{
+                // there is no statement
+                if(stmt != null)
+                    // Close connection
+                    conn.close();
+                
+            }catch(SQLException se){
+           
+            }
+            try{
+                // there are no database credentials
+                if(conn != null)
+                    // Close connection
+                    conn.close();
+           
+            }catch(SQLException se){
+               
+            }
+        
+        }
+        
+        return false;
+        
+    }
 
 }

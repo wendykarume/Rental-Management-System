@@ -155,18 +155,19 @@ public class Provider{
             stmt = conn.createStatement();
             
             // Creating statements to be executed
-            String sql = "SELECT * FROM Provider";
+            String sql = "SELECT Email, Password FROM Provider";
             
             // Creating a resultset
             ResultSet rs = stmt.executeQuery(sql);
             
-            if (rs.getString("Email").equals(email)){
-                if (rs.getString("Password").equals(password)) {
-                    
+            String mail = rs.getString("Email");
+            String pass = rs.getString("Password");
+            
+            if ((mail == null ? email == null : mail.equals(email)) && 
+                    (pass == null ? password == null : pass.equals(password))){
+
                     return true;
                     
-                }
-                
             }
                       
         }catch(SQLException | ClassNotFoundException se){
