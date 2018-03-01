@@ -94,6 +94,13 @@ public class Controller extends Application{
         
     }
     
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
+    
     public static void main(String[] args){
         // Initialising the start method that begins the application
         launch(args);
