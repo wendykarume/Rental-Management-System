@@ -3,6 +3,8 @@ package rental.system.controllers;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -31,5 +33,12 @@ public class AddHouse {
             }
 
         }
+    
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
     
 }
