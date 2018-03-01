@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import java.net.URL;
+import javafx.event.ActionEvent;
 //import java.util.List;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,7 +29,12 @@ public class ViewHouseProvider implements Initializable{
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
-    
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
