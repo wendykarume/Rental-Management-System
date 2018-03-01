@@ -21,16 +21,16 @@ public class House {
             
 
             String sql;
-            sql = "CREATE TABLE IF NOT EXISTS House(HouseID INTEGER AUTO_INCREMENT, " +
-                        " Location TEXT, Type TEXT, " +
-                        " Price INTEGER,Status TEXT " +
-                        " PRIMARY KEY(HouseID))";
+            sql = "CREATE TABLE IF NOT EXISTS House"
+                    + "(HouseID INTEGER AUTO_INCREMENT, "
+                    + " HouseLocation TEXT, HouseType TEXT, "
+                    + " HousePrice INTEGER, HouseStatus TEXT "
+                    + " PRIMARY KEY(HouseID))";
             stmt.executeUpdate(sql);
             
         }catch(SQLException se){
             
-        
-           se.printStackTrace();
+          se.printStackTrace();
            
         }catch(Exception e){
             
@@ -64,8 +64,9 @@ public class House {
     }
    
    public void insert(){
-      String sql = "INSERT INTO Houses (HouseID, Type, Location, Status, Price)"
-               + " VALUES (?, ?, ?, ?, ?)";
+      String sql = "INSERT INTO Houses (HouseID, HouseType, HouseLocation,"
+            + " HouseStatus, HousePrice)"
+            + " VALUES (?, ?, ?, ?, ?)";
   
        
        
