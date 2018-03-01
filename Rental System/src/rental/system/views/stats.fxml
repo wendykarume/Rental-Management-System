@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="stats" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Stats">
+<AnchorPane fx:id="stats" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Stats">
    <children>
-      <PieChart fx:id="piechart" layoutX="11.0" layoutY="10.0" prefHeight="479.0" prefWidth="679.0" />
+      <PieChart fx:id="piechart" layoutX="19.0" layoutY="14.0" prefHeight="412.0" prefWidth="665.0" />
+      <JFXButton buttonType="RAISED" layoutX="58.0" layoutY="442.0" onAction="#exit" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
