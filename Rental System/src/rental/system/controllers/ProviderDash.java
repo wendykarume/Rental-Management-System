@@ -60,4 +60,11 @@ public class ProviderDash{
         
     }
     
+    // Exit function
+    @FXML private void exit(ActionEvent event){
+        
+        System.exit(0);
+        
+    }
+    
 }
