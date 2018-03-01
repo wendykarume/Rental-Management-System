@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="view_house_provider" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
+<AnchorPane fx:id="view_house_provider" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
    <children>
       <TableView layoutX="-1.0" layoutY="94.0" prefHeight="283.0" prefWidth="700.0">
         <columns>
@@ -17,10 +18,20 @@
           <TableColumn fx:id="house_status_col" minWidth="0.0" prefWidth="197.0" text="House Status" />
         </columns>
       </TableView>
-      <Label layoutX="265.0" layoutY="35.0" text="House View">
+      <Label layoutX="265.0" layoutY="35.0" text="House View" textFill="#b21919">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="28.0" layoutY="421.0" onAction="#exit" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
-      </Label>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="568.0" layoutY="421.0" onAction="#back" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

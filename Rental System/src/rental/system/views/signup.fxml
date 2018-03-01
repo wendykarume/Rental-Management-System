@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="signup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Signup">
+<AnchorPane fx:id="signup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Signup">
     <children>
-        <Label layoutX="274.0" layoutY="16.0" prefHeight="36.0" prefWidth="93.0" text="Signup" textFill="#5b1616">
+        <Label layoutX="274.0" layoutY="16.0" prefHeight="36.0" prefWidth="123.0" text="Signup" textFill="#5b1616">
            <font>
               <Font name="Corbel" size="30.0" />
            </font>
