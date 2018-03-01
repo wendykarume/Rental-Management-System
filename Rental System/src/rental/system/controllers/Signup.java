@@ -73,8 +73,10 @@ public class Signup{
                         (first_name.getLength() > 0) && 
                         (last_name.getLength() > 0) && (email.getLength() > 0)
                         && (password.getLength() > 0) &&
-                        (confirm.getLength() > 0) && provider.fetch(email.getText(),
-                        password.getText()) == true){
+                        (confirm.getLength() > 0) && provider.fetch(email.getText(), 
+                                password.getText()) == true && 
+                        (password.getText() == null ? confirm.getText() == null 
+                        : password.getText().equals(confirm.getText()))){
                     // Validate from database
                     /* Code */
                     provider.create();

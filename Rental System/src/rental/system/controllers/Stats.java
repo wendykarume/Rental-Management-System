@@ -31,9 +31,17 @@ public class Stats implements Initializable {
     
     @FXML private void back(ActionEvent event){
         
-    }
-    
-    @FXML private void logout(ActionEvent event){
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/providerdash.fxml"));
+            stats.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(Stats.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
         
     }
     

@@ -9,49 +9,35 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-//import javafx.scene.control.Label;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 public class Alert implements Initializable {
+   
     
-    Stage primaryStage = new Stage();
-    FXMLLoader loader = new FXMLLoader(); // obj to load fxml
+    @FXML private AnchorPane alert;
     
-//    @FXML private Label title;
-//    @FXML private Label text;
-//    
-//    String msg, ttle;
-    
-    @FXML public void display(String title, String message){
-
-        try {
-//                msg = message;
-//                ttle = title;
-                loader.setLocation(getClass().
-                        getResource("/rental/system/ui/alert.fxml"));
-                // getting the location
-                Parent alert = loader.load(); // defining root as the Parent
-                Scene scene = new Scene(alert);
-                primaryStage.setScene(scene);// setting the scene
-                primaryStage.setTitle(title);
-                // setting the title
-                primaryStage.initModality(Modality.APPLICATION_MODAL);
-                primaryStage.show(); // displaying the window
-
-            } catch (IOException ex) {
-                Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
-                // catching exception if fxml not found
-            }
-
-    }
     
     // Exit function
     @FXML private void exit(ActionEvent event){
         
         System.exit(0);
+        
+    }
+    
+    @FXML private void back(ActionEvent event){
+        
+        try{
+            // Running code to catch exception
+            AnchorPane pane = FXMLLoader.load(getClass().
+                    getResource("/rental/system/views/welcome.fxml"));
+            alert.getChildren().setAll(pane);
+            
+        }catch (IOException e) {
+            // Output exception
+            Logger.getLogger(Alert.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
         
     }
 

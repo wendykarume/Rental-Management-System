@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 //import java.util.List;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewHouseProvider implements Initializable{
@@ -25,7 +26,7 @@ public class ViewHouseProvider implements Initializable{
     @FXML private TableColumn house_price_col;
     @FXML private TableColumn house_status_col;
 
-    
+    @FXML private AnchorPane view_house_provider;
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
@@ -33,6 +34,22 @@ public class ViewHouseProvider implements Initializable{
     @FXML private void exit(ActionEvent event){
         
         System.exit(0);
+        
+    }
+    
+    @FXML private void back(ActionEvent event){
+        
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                        getResource("/rental/system/views/providerdash.fxml"));
+            view_house_provider.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(ViewHouseProvider.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
         
     }
 

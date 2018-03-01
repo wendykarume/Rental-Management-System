@@ -8,10 +8,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class ViewHouseUser {
-
+    
+    @FXML private AnchorPane view_house_user;
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
@@ -33,6 +35,22 @@ public class ViewHouseUser {
             // catching exception if fxml not found
         }
     
+    }
+    
+    @FXML private void back(ActionEvent event){
+        
+        try{
+            // Running code to catch exception
+            AnchorPane pane = FXMLLoader.load(getClass().
+                    getResource("/rental/system/views/userdash.fxml"));
+            view_house_user.getChildren().setAll(pane);
+        }catch (IOException e) {
+            // Output exception
+            Logger.getLogger(ViewHouseUser.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
     }
     
     // Exit function

@@ -36,6 +36,22 @@ public class UserDash {
         
     }
     
+    @FXML private void back(ActionEvent event){
+        
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/login.fxml"));
+            user_dash.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(UserDash.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
+    }
+    
     // Exit function
     @FXML private void exit(ActionEvent event){
         

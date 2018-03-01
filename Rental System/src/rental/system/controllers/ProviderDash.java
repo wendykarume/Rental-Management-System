@@ -21,7 +21,7 @@ public class ProviderDash{
     @FXML private AnchorPane provider_dash;
     
     // Private method to view houses as provider
-    @FXML private void viewHouses(ActionEvent event){
+    @FXML private void viewHouse(ActionEvent event){
         
         try{
             AnchorPane pane = FXMLLoader.load(getClass().
@@ -37,9 +37,35 @@ public class ProviderDash{
         
     }
     
-    @FXML private void addHouses(ActionEvent event){
+    @FXML private void addHouse(ActionEvent event){
         
-        //code
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                        getResource("/rental/system/views/addhouse.fxml"));
+            provider_dash.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(ProviderDash.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
+    }
+    
+    @FXML private void back(){
+        
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/login.fxml"));
+            provider_dash.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(ProviderDash.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
         
     }
     

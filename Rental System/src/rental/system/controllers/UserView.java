@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -21,6 +22,7 @@ import javafx.stage.Stage;
  */
 public class UserView {
     
+    @FXML private AnchorPane user_view;
     Stage primaryStage = new Stage();
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
@@ -42,6 +44,22 @@ public class UserView {
             }        
 
         }
+    
+    @FXML private void back(ActionEvent event){
+        
+        try{
+            AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/userdash.fxml"));
+            user_view.getChildren().setAll(pane);
+            
+        }catch (IOException e){
+            // Output exception
+            Logger.getLogger(UserView.class.getName()).
+                    log(Level.SEVERE, null, e);
+            
+        }
+        
+    }
     
     // Exit function
     @FXML private void exit(ActionEvent event){
