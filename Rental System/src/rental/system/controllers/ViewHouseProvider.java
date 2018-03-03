@@ -7,27 +7,35 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-//import java.util.List;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import rental.system.models.House;
+import rental.system.models.HouseData;
 
 public class ViewHouseProvider implements Initializable{
     
-    @FXML private TableView houseview;
-    @FXML private TableColumn house_type_col;
-    @FXML private TableColumn house_location_col;
-    @FXML private TableColumn house_price_col;
-    @FXML private TableColumn house_status_col;
-
     @FXML private AnchorPane view_house_provider;
-    Stage primaryStage = new Stage();
+    
+    @FXML private TableView<HouseData> house_view;
+    @FXML private TableColumn<HouseData, Integer> house_id;
+    @FXML private TableColumn<HouseData, String> house_type;
+    @FXML private TableColumn<HouseData, String> house_location;
+    @FXML private TableColumn<HouseData, Integer> house_price;
+    @FXML private TableColumn<HouseData, String> house_status;
+    
+    House house = new House();
+    
     FXMLLoader loader = new FXMLLoader(); // obj to load fxml
     
     // Exit function
@@ -56,46 +64,63 @@ public class ViewHouseProvider implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources){
      
-        house_type_col.setCellValueFactory(new PropertyValueFactory("id"));
-        house_location_col.setCellValueFactory(new PropertyValueFactory("id"));
-        house_price_col.setCellValueFactory(new PropertyValueFactory("id"));
-        house_status_col.setCellValueFactory(new PropertyValueFactory("id"));
-        
-//        houseview.getItems().setAll(parseUserList());
-        
-    }
-    
-//    private List parseUserList(){
-//        
-//        //code
-//        
-//    }
-    
-    
-    public void show(){
-    
-    try {
-            loader.setLocation(getClass().
-                    getResource("/rental/system/ui/viewhouseprovider.fxml"));
-            // getting the location
-            Parent root = loader.load(); // defining root as the Parent
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);// setting the scene
-            primaryStage.setTitle("View Houses ~ Provider | Rental Management System");
-            // setting the title
-            primaryStage.show(); // displaying the window
+        try {
+            ResultSet rs = house.allHouses();
+            while (rs.next()){
+                
+                int id = rs.getInt("HouseID");
+                String type = rs.getString("HouseType");
+                String place = rs.getString("HouseLocation");
+                int price = rs.getInt("HousePrice");
+                String status = rs.getString("HouseStatus");
             
-        } catch (IOException ex) {
-            Logger.getLogger(ViewHouseProvider.class.getName()).log(Level.SEVERE, null, ex);
-            // catching exception if fxml not found
+                ObservableList<HouseData> data = FXCollections.observableArrayList(
+
+                        new HouseData(id, type, place, price, status)
+
+                );
+            }
+            
+            house_id.setCellValueFactory(
+                    new PropertyValueFactory<>("houseid"));
+            house_type.setCellValueFactory(
+                    new PropertyValueFactory<>("housetype"));
+            house_location.setCellValueFactory(
+                    new PropertyValueFactory<>("houselocation"));
+            house_price.setCellValueFactory(
+                    new PropertyValueFactory<>("houseprice"));
+            house_status.setCellValueFactory(
+                    new PropertyValueFactory<>("housestatus"));
+            
+            house_view.setItems(getHouses());
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewHouseProvider.class.getName()).
+                    log(Level.SEVERE, null, ex);
         }
-    
-    }
-    
-    public void close(){
-        
-        primaryStage.close();
         
     }
     
+    public ObservableList<HouseData> getHouses() throws SQLException{
+        
+        ObservableList<HouseData> housedata = 
+                FXCollections.observableArrayList();
+        
+        ResultSet rs = house.allHouses();
+        
+        while (rs.next()){
+            
+            int id = rs.getInt("HouseID");
+            String type = rs.getString("HouseType");
+            String place = rs.getString("HouseLocation");
+            int price = rs.getInt("HousePrice");
+            String status = rs.getString("HouseStatus");
+            
+            housedata.add(new HouseData(id, type, place, price, status));
+    
+        }
+        
+        return housedata;
+        
+    }
 }
