@@ -37,22 +37,6 @@ public class ProviderDash{
         
     }
     
-    @FXML private void addHouse(ActionEvent event){
-        
-        try{
-            AnchorPane pane = FXMLLoader.load(getClass().
-                        getResource("/rental/system/views/addhouse.fxml"));
-            provider_dash.getChildren().setAll(pane);
-            
-        }catch (IOException e){
-            // Output exception
-            Logger.getLogger(ProviderDash.class.getName()).
-                    log(Level.SEVERE, null, e);
-            
-        }
-        
-    }
-    
     @FXML private void back(ActionEvent Event){
         
         try{
