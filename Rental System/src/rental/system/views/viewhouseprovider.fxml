@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="view_house_provider" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
+<AnchorPane fx:id="view_house_provider" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
    <children>
-      <TableView layoutX="-1.0" layoutY="94.0" prefHeight="283.0" prefWidth="700.0">
+      <TableView fx:id="house_view" layoutX="-1.0" layoutY="94.0" prefHeight="283.0" prefWidth="700.0">
         <columns>
-            <TableColumn fx:id="house_type_col1" prefWidth="89.0" text="House ID" />
-          <TableColumn fx:id="house_type_col" prefWidth="141.0" text="House Type" />
-          <TableColumn fx:id="house_location_col" prefWidth="152.0" text="House Location" />
-          <TableColumn fx:id="house_price_col" minWidth="0.0" prefWidth="154.0" text="House Price" />
-          <TableColumn fx:id="house_status_col" minWidth="0.0" prefWidth="197.0" text="House Status" />
+          <TableColumn fx:id="house_id" prefWidth="89.0" text="House ID" />
+          <TableColumn fx:id="house_type" prefWidth="141.0" text="House Type" />
+          <TableColumn fx:id="house_location" prefWidth="152.0" text="House Location" />
+          <TableColumn fx:id="house_price" minWidth="0.0" prefWidth="154.0" text="House Price" />
+          <TableColumn fx:id="house_status" minWidth="0.0" prefWidth="197.0" text="House Status" />
         </columns>
       </TableView>
       <Label layoutX="265.0" layoutY="35.0" text="House View" textFill="#b21919">
@@ -28,7 +28,12 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="568.0" layoutY="421.0" onAction="#back" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="568.0" layoutY="421.0" onAction="#back" style="-fx-background-color: orange;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="304.0" layoutY="421.0" onAction="#addHouse" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
