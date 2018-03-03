@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 // Exception handling imports
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -19,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 import javafx.scene.layout.AnchorPane;
+import rental.system.models.House;
 
 /*
     Class that will facilitate the display of statistics to a provider
@@ -28,6 +31,35 @@ public class Stats implements Initializable {
     // Objects to be used
     @FXML private PieChart piechart;
     @FXML private AnchorPane stats;
+    House house = new House();
+    private final ObservableList <PieChart.Data> piechartdata = 
+            FXCollections.observableArrayList();   
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            // Get values from database and output
+            
+            ResultSet rs = house.occupiedHouses();
+            
+            while (rs.next()){
+                
+                String type = rs.getString("HouseType");
+                int price = rs.getInt("HousePrice");
+                
+                piechartdata.add(new PieChart.Data(type, price));
+               
+                
+            }
+            
+            piechart.setData(piechartdata);
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Stats.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
     
     @FXML private void back(ActionEvent event){
         
@@ -51,19 +83,5 @@ public class Stats implements Initializable {
         System.exit(0);
         
     }
-    
-    
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-        // Get values from database and output
-        ObservableList <PieChart.Data> piechartdata =
-                                                FXCollections.observableArrayList(
-        new PieChart.Data("Executed", 60),
-        new PieChart.Data("Passed", 25),
-        new PieChart.Data("Fails", 15));
-        piechart.setData(piechartdata);
-    }    
     
 }
