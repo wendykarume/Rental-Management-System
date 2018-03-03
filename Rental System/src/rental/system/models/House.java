@@ -3,7 +3,7 @@ import java.sql.*;
 
 public class House {
     // JDBC driver name and database URL
-     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     static final String DB_URL = "jdbc:mysql://localhost/HOUSE_RENTAL_SYSTEM";
 
     //  Database credentials
@@ -24,7 +24,7 @@ public class House {
             sql = "CREATE TABLE IF NOT EXISTS House"
                     + "(HouseID INTEGER AUTO_INCREMENT, "
                     + " HouseLocation TEXT, HouseType TEXT, "
-                    + " HousePrice TEXT, HouseStatus TEXT, "
+                    + " HousePrice INTEGER, HouseStatus TEXT, "
                     + " PRIMARY KEY(HouseID))";
             stmt.executeUpdate(sql);
             
@@ -63,7 +63,7 @@ public class House {
 
     }
    
-    public void insert(String type, String location, String status, String price)
+    public void insert(String type, String location, String status, int price)
             throws SQLException{
 
         try{
@@ -89,7 +89,7 @@ public class House {
             statement.setString(1, type);
             statement.setString(2, location);
             statement.setString(3, status);
-            statement.setString(4, price);
+            statement.setInt(4, price);
             
             // Executing statement
             statement.executeUpdate();
@@ -125,6 +125,63 @@ public class House {
         }       
        
    }
-       
-       
+    
+    public ResultSet allHouses() throws SQLException{
+        
+        try{
+            // Catching a connection exception
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
+            // Manually committing data
+            conn.setAutoCommit(false);
+            
+            // Creating a statement to be used while on the connection
+            stmt = conn.createStatement();
+            
+            // Creating statements to be executed
+            String sql = "SELECT * FROM House";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            return rs;
+            
+        }catch(SQLException | ClassNotFoundException se){
+            // Revert
+            conn.rollback();
+            
+        }
+         
+        return null;
+        
+    }
+    
+    public ResultSet occupiedHouses() throws SQLException{
+        
+        try{
+            // Catching a connection exception
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
+            // Manually committing data
+            conn.setAutoCommit(false);
+            
+            // Creating a statement to be used while on the connection
+            stmt = conn.createStatement();
+            
+            // Creating statements to be executed
+            String sql = "SELECT * FROM House WHERE HouseStatus = 'Available'";
+            
+            ResultSet rs = stmt.executeQuery(sql);
+            return rs;
+            
+        }catch(SQLException | ClassNotFoundException se){
+            // Revert
+            conn.rollback();
+            
+        }
+         
+        return null;
+        
+    }
+           
 }
