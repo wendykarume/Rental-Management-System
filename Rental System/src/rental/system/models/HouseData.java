@@ -22,6 +22,17 @@ public class HouseData {
             this.housestatus = new SimpleStringProperty(status);
 
         }
+        
+        public HouseData(String type, String location, int price,
+                        String status){
+
+            this.houseid = new SimpleIntegerProperty();
+            this.housetype = new SimpleStringProperty(type);
+            this.houselocation = new SimpleStringProperty(location);
+            this.houseprice = new SimpleIntegerProperty(price);
+            this.housestatus = new SimpleStringProperty(status);
+
+        }
 
 
         public int getHouseid() {
