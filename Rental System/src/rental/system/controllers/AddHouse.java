@@ -8,14 +8,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import rental.system.models.House;
 
 public class AddHouse {
 
-    Stage primaryStage = new Stage();
     @FXML private AnchorPane add_house;
-    @FXML private JFXTextField type, location, status, price;
+    @FXML private JFXTextField type, place, status, price;
     
     House house = new House();
     
@@ -23,8 +21,8 @@ public class AddHouse {
         
         try{
             house.create();
-            house.insert(type.getText(), location.getText(), status.getText(), 
-                    price.getText());
+            house.insert(type.getText(), place.getText(), status.getText(), 
+                    Integer.parseInt(price.getText()));
         
             AnchorPane pane = FXMLLoader.load(getClass().
                     getResource("/rental/system/views/viewhouseprovider.fxml"));
