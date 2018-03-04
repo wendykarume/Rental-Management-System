@@ -23,6 +23,7 @@ import javafx.scene.layout.AnchorPane;
 // Database imports
 import rental.system.models.Provider;
 import rental.system.models.User;
+import rental.system.sources.BCrypt;
 
 /*
     Class facilitating signup as user or provider
@@ -40,6 +41,9 @@ public class Signup{
     // Database objects
     User user = new User();
     Provider provider = new Provider();
+    
+    // Setting up for password hashing
+    private String hashed;
     
     // Private method to dashboard after signup
     @FXML private void toDash(ActionEvent event) throws SQLException{
@@ -119,16 +123,20 @@ public class Signup{
                     if (user_rs != null){
                         
                         // Alerting the user
-                        mail.setText("Email exists, use another");
+                        mail.setText("Email elready exists, use another");
                         sign_up.setText("You should Login");
                         
                     }else{
                         // Creating database tables
                         user.create();
                         
+                        // Hashing the password input
+                        hashed = BCrypt.hashpw(password.getText(), 
+                                BCrypt.gensalt(12)); 
+                                
                         // inserting userdata
                         user.insert(first_name.getText(), last_name.getText(), 
-                                email.getText(), password.getText());
+                                email.getText(), hashed);
 
                         // Afterwards displaying UserDash
                         AnchorPane pane = FXMLLoader.load(getClass().
@@ -144,17 +152,21 @@ public class Signup{
                     if (provider_rs != null){
                         
                         // Alerting the user
-                        mail.setText("Email exists, use another");
+                        mail.setText("Email already exists, use another");
                         sign_up.setText("You should Login");
                         
                     }else{
                         // Creating tables
                         provider.create();
                         
+                        // Hashing the password input
+                        hashed = BCrypt.hashpw(password.getText(), 
+                                BCrypt.gensalt());
+                        
                         // Inserting data
                         provider.insert(first_name.getText(), 
                                 last_name.getText(), email.getText(), 
-                                password.getText());
+                                hashed);
 
                         // Catch exception if present
                         AnchorPane pane = FXMLLoader.load(getClass().
