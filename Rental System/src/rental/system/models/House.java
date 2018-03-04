@@ -1,4 +1,7 @@
+// Class package
 package rental.system.models;
+
+// Universal import as there are many sql imports required
 import java.sql.*;
 
 public class House {
@@ -9,10 +12,13 @@ public class House {
     //  Database credentials
     static final String USER = "test";
     static final String PASS = "R3ntal_Syst3m";
+    
+    // Initialising variables to null
     Connection conn = null;
     Statement stmt = null;
    
-   public void create(){
+    // Public method that creates the house table
+    public void create(){
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
@@ -37,32 +43,32 @@ public class House {
            e.printStackTrace();
            
         }finally{
-            
-           try{
-               
-                if(stmt!=null)
-                    
+            // Close connection if ...
+            try{
+                // there is no statement
+                if(stmt != null)
+                    // Close connection
                     conn.close();
                 
-           }catch(SQLException se){
+            }catch(SQLException se){
            
-           }
-           try{
-               
-                if(conn!=null)
-                    
+            }
+            try{
+                // there are no database credentials
+                if(conn != null)
+                    // Close connection
                     conn.close();
            
-           }catch(SQLException se){
-                
-               se.printStackTrace();
-           
-           }
+            }catch(SQLException se){
+               
+            }
         
         }
 
     }
    
+    // Public method that inserts data into the data from the values parsed in
+    // the parameters of the function
     public void insert(String type, String location, String status, int price)
             throws SQLException{
 
@@ -122,10 +128,11 @@ public class House {
                
             }
         
-        }       
+        }
        
    }
     
+    // Public method that returns a ResultSet of the houses
     public ResultSet allHouses() throws SQLException{
         
         try{
@@ -142,7 +149,10 @@ public class House {
             // Creating statements to be executed
             String sql = "SELECT * FROM House";
             
+            // Creating a ResultSet with houses
             ResultSet rs = stmt.executeQuery(sql);
+            
+            // Returning the ResultSet
             return rs;
             
         }catch(SQLException | ClassNotFoundException se){
@@ -150,11 +160,12 @@ public class House {
             conn.rollback();
             
         }
-         
+        // Returning nothing
         return null;
         
     }
     
+    // Public method returning houses if they are available
     public ResultSet occupiedHouses() throws SQLException{
         
         try{
@@ -171,7 +182,10 @@ public class House {
             // Creating statements to be executed
             String sql = "SELECT * FROM House WHERE HouseStatus = 'Available'";
             
+            // Creating a ResultSet
             ResultSet rs = stmt.executeQuery(sql);
+            
+            // Returning the ResultSet
             return rs;
             
         }catch(SQLException | ClassNotFoundException se){
@@ -179,7 +193,7 @@ public class House {
             conn.rollback();
             
         }
-         
+        // Returning nothing
         return null;
         
     }
