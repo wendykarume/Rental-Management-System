@@ -114,13 +114,14 @@ public class Signup{
             }else{
                 // Validating from and inserting into database                
                 
+                // Getting data from database
+                ResultSet provider_rs = provider.fetch(email.getText());
+                ResultSet user_rs = user.fetch(email.getText());
+                
                 // If user button is selected 
                 if (userbutton.isSelected()){
                     
-                    // Getting email from database
-                    ResultSet user_rs = user.fetch(email.getText());
-                    
-                    if (user_rs != null){
+                    if ((user_rs != null) || (provider_rs != null)){
                         
                         // Alerting the user
                         mail.setText("Email elready exists, use another");
@@ -152,10 +153,8 @@ public class Signup{
                     }
                         
                 }else if(providerbutton.isSelected()){
-                    // Getting provider data from database
-                    ResultSet provider_rs = provider.fetch(email.getText());
                     
-                    if (provider_rs != null){
+                    if ((provider_rs != null) || (user_rs != null)){
                         
                         // Alerting the user
                         mail.setText("Email already exists, use another");
