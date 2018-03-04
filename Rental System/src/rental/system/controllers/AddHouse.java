@@ -32,10 +32,16 @@ public class AddHouse {
     @FXML private void add(ActionEvent event) throws Exception{
         
         try{
+            // Creating database tables
             house.create();
+            
+            // Inserting data into database
             house.insert(type.getText(), place.getText(), status.getText(), 
                     Integer.parseInt(price.getText()));
         
+            // Closing connection
+            house.closeConnection();
+            
             AnchorPane pane = FXMLLoader.load(getClass().
                     getResource("/rental/system/views/viewhouseprovider.fxml"));
             add_house.getChildren().setAll(pane);

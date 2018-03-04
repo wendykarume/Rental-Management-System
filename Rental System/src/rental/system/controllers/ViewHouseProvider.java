@@ -105,11 +105,17 @@ public class ViewHouseProvider implements Initializable{
                 // Adding the values obtained into the observable list
                 housedata.add(new HouseData(id, type, place, price, status));
 
-            }  
+            }
+            // Closing connection
+            house.closeConnection();
+            
             // Returning the list with values
             return housedata;
             
         }
+        // Closing connection
+        house.closeConnection();
+        
         // Returning null as the ResultSet was empty
         return null;
     

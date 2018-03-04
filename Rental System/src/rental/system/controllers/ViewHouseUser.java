@@ -99,9 +99,15 @@ public class ViewHouseUser implements Initializable{
                 housedata.add(new HouseData(type, place, price, status));
 
             }
+            // Closing connection
+            house.closeConnection();
+            
             // Returning the observable list after looping is done
             return housedata;
-        }
+        }        
+        // Closing connection
+        house.closeConnection();
+        
         // Returning null as the ResultSet was empty
         return null;
         

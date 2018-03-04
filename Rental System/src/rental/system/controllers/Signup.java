@@ -126,6 +126,9 @@ public class Signup{
                         mail.setText("Email elready exists, use another");
                         sign_up.setText("You should Login");
                         
+                        // Closing connection
+                        user.closeConnection();
+                        
                     }else{
                         // Creating database tables
                         user.create();
@@ -138,6 +141,9 @@ public class Signup{
                         user.insert(first_name.getText(), last_name.getText(), 
                                 email.getText(), hashed);
 
+                        // Closing connection
+                        user.closeConnection();
+                        
                         // Afterwards displaying UserDash
                         AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
@@ -155,6 +161,9 @@ public class Signup{
                         mail.setText("Email already exists, use another");
                         sign_up.setText("You should Login");
                         
+                        // Closing connection
+                        provider.closeConnection();
+                        
                     }else{
                         // Creating tables
                         provider.create();
@@ -168,6 +177,9 @@ public class Signup{
                                 last_name.getText(), email.getText(), 
                                 hashed);
 
+                        // Closing connection
+                        provider.closeConnection();
+                        
                         // Catch exception if present
                         AnchorPane pane = FXMLLoader.load(getClass().
                                 getResource

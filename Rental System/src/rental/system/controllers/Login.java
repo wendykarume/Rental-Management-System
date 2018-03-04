@@ -119,8 +119,14 @@ public class Login {
                         email.clear();
                         password.clear();
                         
+                        // Closing connection
+                        user.closeConnection();
+                        
                     // Proceeding to UserDash upon all conditions being met
                     } else {
+                        // Closing connection
+                        user.closeConnection();
+                        
                         // Display window
                         AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
@@ -151,8 +157,14 @@ public class Login {
                         email.clear();
                         password.clear();
                     
+                        // Closing connection
+                        provider.closeConnection();
+                        
                     // Proceeding to ProviderDash upon all cases being met
                     }else{
+                        // Closing connection
+                        provider.closeConnection();
+                        
                         // Catch exception if present
                         AnchorPane pane = FXMLLoader.load(getClass().
                         getResource("/rental/system/views/providerdash.fxml"));
