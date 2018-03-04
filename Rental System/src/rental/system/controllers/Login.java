@@ -1,14 +1,14 @@
 // Class package
 package rental.system.controllers;
 
-// Custom user interface package imports
+// Custom user interface package
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
 // Imports for exception handling
 import java.io.IOException;
-import java.sql.ResultSet;
+//import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,8 +16,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 
 // Application imports
@@ -38,7 +36,6 @@ public class Login {
     User user = new User();
     
     // FXML Objects to be used
-    @FXML private Label log_in, pass, mail, radio_check;
     @FXML private AnchorPane login;
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
@@ -47,110 +44,49 @@ public class Login {
     // Private function that validates and redirects to the right dashboard
     @FXML private void toDash(ActionEvent event) throws Exception {
                 
+        // Database objects to create tables before inserting data
         try{
-            // Validating input by user
-            
-            // Clearing labels
-            log_in.setText("");
-            radio_check.setText("");
-            pass.setText("");
-            mail.setText("");
-            
-            // Making sure neither radiobuttons are not selected
-            if (!userbutton.isSelected() && !providerbutton.isSelected()){
-   
-                // Alerting user
-                radio_check.setText("Select to continue");
-            
-            // Making sure the email is not empty
-            }else if ((email.getLength() == 0)){
-                
-                // Alerting upon empty email field
-                mail.setText("Required field");
-                
-                // Clearing email
-                email.clear();
-                
-            // Setting suitable length for password
-            }else if((password.getLength() == 0) || (password.getLength() < 8)){
-                              
-                // Alerting upon empty password field
-                pass.setText("Length of 8 or more");
-                                
-                // Clearing password
-                password.clear();
-                
-            // Making sure email has the @ symbol
-            }else if (!email.getText().contains("@")) {
-                                
-                // Alerting upon invalid email
-                mail.setText("Invalid email");
-                
-                // Clearing email
-                email.clear();
+            // Making sure fields are not empty upon submission
+            if ((email.getLength() == 0) || (password.getLength() == 0)){
+
+                // Loading Alert Window
+                AnchorPane pane = FXMLLoader.load(getClass().
+                        getResource("/rental/system/views/alert.fxml"));
+                login.getChildren().setAll(pane);
                 
             }else{
-                // Vailidating from database
-                
-                // Getting User data from database
-                ResultSet user_rs = 
-                        user.fetch(email.getText(), password.getText());
-                
-                // Getting Provider data from database
-                ResultSet provider_rs = 
-                        provider.fetch(email.getText(), password.getText());
-                
-                // Alerting that credetials are not in database or invalid
-                if ((userbutton.isSelected()) && user_rs == null){
-                                        
-                    // Setting texts for alerting the user
-                    log_in.setText("Have you signed up?");
-                    mail.setText("Invalid Email");
-                    pass.setText("Invalid Password");
+                // Redirect to appropriate dashboard on radiobutton selection
+                if ((userbutton.isSelected()) && (email.getLength() > 0) &&
+                        (password.getLength() > 0)){
                     
-                    // Deselecting the radio buttons
-                    userbutton.setSelected(false);
-                    providerbutton.setSelected(false);
+                    // Validating from database
                     
-                    // Clearing fields
-                    email.clear();
-                    password.clear();
-                
-                // Alerting that credetials are not in database or invalid
-                }else if((providerbutton.isSelected()) && provider_rs == null){
-                                       
-                    // Setting alert texts
-                    log_in.setText("Have you signed up?");
-                    mail.setText("Invalid Email");
-                    pass.setText("Invalid Password");
-                    
-                    // Deselecting the radio buttons
-                    userbutton.setSelected(false);
-                    providerbutton.setSelected(false);
-                    
-                    // Clearing fields
-                    email.clear();
-                    password.clear();
-                    
-                // Proceeding to UserDash upon all cases being met
-                } else if ((userbutton.isSelected()) && (user_rs != null)){
-                    
+
                     // Run code and catch exception if there
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
                     login.getChildren().setAll(pane);
-                
-                // Proceeding to ProviderDash upon all cases being met
-                }else if((providerbutton.isSelected()) && provider_rs != null){
                     
-                    // Catch exception if present
-                    AnchorPane pane = FXMLLoader.load(getClass().
-                        getResource("/rental/system/views/providerdash.fxml"));
-                    login.getChildren().setAll(pane);
-                
-                // Alerting that a miscellaneous error occurred
+                }else if((providerbutton.isSelected()) && 
+                        (email.getLength() > 0) && (password.getLength() > 0)){
+                    
+                    // Validating from database
+//                    if (provider.fetch(email.getText(), password.getText()) 
+//                            == true){
+                        
+                        // Catch exception if present
+                        AnchorPane pane = FXMLLoader.load(getClass().
+                            getResource("/rental/system/views/providerdash.fxml"));
+                        login.getChildren().setAll(pane);
+                        
+//                    }
+//
+//                    // Loading Alert Window
+//                    AnchorPane pane = FXMLLoader.load(getClass().
+//                            getResource("/rental/system/views/alert.fxml"));
+//                    login.getChildren().setAll(pane);
+                                        
                 }else{
-                    
                     // Loading Alert Window
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/alert.fxml"));
