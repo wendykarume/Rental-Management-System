@@ -17,14 +17,15 @@ import javafx.scene.layout.AnchorPane;
 */
 public class UserDash {
     
+    // FXML objects to be used
     @FXML private AnchorPane user_dash;
     
-    // Private method to view houses as a table
+    // Private method to display the view houses window as a table
     @FXML private void viewHouses(ActionEvent event){
         
         try{
             AnchorPane pane = FXMLLoader.load(getClass().
-                            getResource("/rental/system/views/viewhouseuser.fxml"));
+                        getResource("/rental/system/views/viewhouseuser.fxml"));
             user_dash.getChildren().setAll(pane);
             
         }catch (IOException e){
@@ -36,6 +37,7 @@ public class UserDash {
         
     }
     
+    // Private method for going back
     @FXML private void back(ActionEvent event){
         
         try{
