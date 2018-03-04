@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXTextField;
 
 // Imports for exception handling
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 // Database imports
@@ -32,6 +34,8 @@ public class Signup{
     @FXML private JFXTextField first_name, last_name, email;
     @FXML private JFXPasswordField password, confirm;
     @FXML private JFXRadioButton userbutton, providerbutton;
+    @FXML private Label radio_check, fname, lname, mail, pass, pass_confirm, 
+            sign_up;
     
     // Database objects
     User user = new User();
@@ -40,57 +44,128 @@ public class Signup{
     // Private method to dashboard after signup
     @FXML private void toDash(ActionEvent event) throws SQLException{
         
+        // Clearing fields
+        radio_check.setText("");
+        fname.setText("");
+        lname.setText("");
+        mail.setText("");
+        pass.setText("");
+        pass_confirm.setText("");
+        sign_up.setText("");
+        
         try{
-            // Making sure no field is empty upon submission
-            if ((first_name.getLength() == 0) || (last_name.getLength() == 0)
-                    || (email.getLength() == 0) || (password.getLength() == 0) || 
-                    (confirm.getLength() == 0)){
+            // Checking user input
+            
+            // Making sure a radiobutton is selected
+            if (!userbutton.isSelected() && !providerbutton.isSelected()){
+                
+                // Setting messge for user
+                radio_check.setText("Select to proceed");
+            
+            // Making sure the first name is not empty upon submission
+            } else if (first_name.getLength() == 0){
+                
+                // Setting error message
+                fname.setText("Required field");
+                
+            // Making sure the last name field is not empty upon submission
+            }else if (last_name.getLength() == 0){
+                
+                // Outputting error message
+                lname.setText("Required field");                
 
-                    // Loading Alert Window
-                    AnchorPane pane = FXMLLoader.load(getClass().
-                            getResource("/rental/system/views/alert.fxml"));
-                    signup.getChildren().setAll(pane);
-
+            // Checking email
+            } else if (email.getLength() == 0){
+                
+                // Outputting message
+                mail.setText("Required field");
+                
+            // Making sure email has the @ symbol
+            } else if (!email.getText().contains("@")){
+                
+                // Outputting text
+                mail.setText("Invalid email");
+                
+            // Checking length of password
+            }else if(password.getLength() < 8){
+                
+                // Outputting message
+                pass.setText("Invalid, input 8 or more characters");
+                
+            // Checking length of confirm
+            } else if (confirm.getLength() < 8){
+                
+                // Outputting message
+                pass_confirm.setText("Invalid, input 8 or more characters");
+                
+            }else if (!password.getText().equals(confirm.getText())){
+                
+                pass.setText("Passwords do not match");
+                pass_confirm.setText("Passwords do not match");
+                
+                // Clearing fields
+                password.clear();
+                confirm.clear();
+                
             }else{
-                // Appropriate data insertion to database
-                if ((userbutton.isSelected()) && (first_name.getLength() > 0) && 
-                        (last_name.getLength() > 0) && (email.getLength() > 0)
-                        && (password.getLength() > 0) &&
-                        (confirm.getLength() > 0) && user.fetch(email.getText(),
-                        password.getText()) == true){
-                    //Validate from database
-                    /* Code */
-                    user.create();
-                    user.insert(first_name.getText(), last_name.getText(), 
-                            email.getText(), password.getText());
+                // Validating from and inserting into database                
+                
+                // If user button is selected 
+                if (userbutton.isSelected()){
                     
-                    // Run code and catch exception if there
-                    AnchorPane pane = FXMLLoader.load(getClass().
+                    // Getting email from database
+                    ResultSet user_rs = user.fetch(email.getText());
+                    
+                    if (user_rs != null){
+                        
+                        // Alerting the user
+                        mail.setText("Email exists, use another");
+                        sign_up.setText("You should Login");
+                        
+                    }else{
+                        // Creating database tables
+                        user.create();
+                        
+                        // inserting userdata
+                        user.insert(first_name.getText(), last_name.getText(), 
+                                email.getText(), password.getText());
+
+                        // Afterwards displaying UserDash
+                        AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
-                    signup.getChildren().setAll(pane);
+                        signup.getChildren().setAll(pane);
+                        
+                    }
+                        
+                }else if(providerbutton.isSelected()){
+                    // Getting provider data from database
+                    ResultSet provider_rs = provider.fetch(email.getText());
+                    
+                    if (provider_rs != null){
+                        
+                        // Alerting the user
+                        mail.setText("Email exists, use another");
+                        sign_up.setText("You should Login");
+                        
+                    }else{
+                        // Creating tables
+                        provider.create();
+                        
+                        // Inserting data
+                        provider.insert(first_name.getText(), 
+                                last_name.getText(), email.getText(), 
+                                password.getText());
 
-                }else if((providerbutton.isSelected()) && 
-                        (first_name.getLength() > 0) && 
-                        (last_name.getLength() > 0) && (email.getLength() > 0)
-                        && (password.getLength() > 0) &&
-                        (confirm.getLength() > 0) && provider.fetch(email.getText(), 
-                                password.getText()) == true && 
-                        (password.getText() == null ? confirm.getText() == null 
-                        : password.getText().equals(confirm.getText()))){
-                    // Validate from database
-                    /* Code */
-                    provider.create();
-                    provider.insert(first_name.getText(), last_name.getText(), 
-                            email.getText(), password.getText());
-
-                    // Catch exception if present
-                    AnchorPane pane = FXMLLoader.load(getClass().
-                            getResource
-                            ("/rental/system/views/providerdash.fxml"));
-                    signup.getChildren().setAll(pane);
-
+                        // Catch exception if present
+                        AnchorPane pane = FXMLLoader.load(getClass().
+                                getResource
+                                ("/rental/system/views/providerdash.fxml"));
+                        signup.getChildren().setAll(pane);
+                        
+                    }
+                        
                 }else{
-                    // Loading Alert Window
+                    // Loading Alert Window for miscellaneous error
                     AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/alert.fxml"));
                     signup.getChildren().setAll(pane);
