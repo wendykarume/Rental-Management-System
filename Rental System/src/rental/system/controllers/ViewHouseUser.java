@@ -1,12 +1,20 @@
+// Class package
 package rental.system.controllers;
 
+// Exception handling
 import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+// Java imports
+import java.net.URL;
+import java.util.ResourceBundle;
+
+// SQL imports
+import java.sql.ResultSet;
+
+// JavaFX imports
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,11 +25,19 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+
+// Class imports
 import rental.system.models.House;
 import rental.system.models.HouseData;
 
+/*
+    Class that displays the houses to the User. It implements Initializable 
+    class that utilises overriden method Initialize in order to set values into
+    the table before display
+*/
 public class ViewHouseUser implements Initializable{
     
+    // FXML objects to be used
     @FXML private AnchorPane view_house_user;
     @FXML private TableView<HouseData> house_view;
     @FXML private TableColumn<HouseData, String> house_type;
@@ -31,11 +47,17 @@ public class ViewHouseUser implements Initializable{
     
     // Class objects to be used
     House house = new House();
+    
+    // Observable list to be used
+    private ObservableList<HouseData> housedata = 
+            FXCollections.observableArrayList();
 
+    // Overriden method that starts up the table with values already set
     @Override
     public void initialize(URL location, ResourceBundle resources){
      
         try {
+            // Adding the values into the cells of the table
             house_type.setCellValueFactory(
                     new PropertyValueFactory<>("housetype"));
             house_location.setCellValueFactory(
@@ -45,6 +67,8 @@ public class ViewHouseUser implements Initializable{
             house_status.setCellValueFactory(
                     new PropertyValueFactory<>("housestatus"));
 
+            // Sets the values into the table obtained from the getHouses()
+            // method
             house_view.setItems(getHouses());
         
         } catch (SQLException ex) {
@@ -54,15 +78,15 @@ public class ViewHouseUser implements Initializable{
         
     }
     
+    // Private method that returns an observable list that is fed into the table
     private ObservableList<HouseData> getHouses() throws SQLException{
         
-        ObservableList<HouseData> housedata = 
-                FXCollections.observableArrayList();
-        
+        // ResultSet with houses obtained from the database
         ResultSet rs = house.allHouses();
         
+        // Making sure the ResultSet is not null that will throw an SQLException
         if (rs != null){
-        
+            // Lopping through the ResultSet getting values by column name
             while (rs.next()){
 
                 String type = rs.getString("HouseType");
@@ -70,17 +94,20 @@ public class ViewHouseUser implements Initializable{
                 int price = rs.getInt("HousePrice");
                 String status = rs.getString("HouseStatus");
 
+                // Adding the values obtained corresponding to the data model
+                // defined at HouseData class
                 housedata.add(new HouseData(type, place, price, status));
 
             }
-
+            // Returning the observable list after looping is done
             return housedata;
         }
-        
+        // Returning null as the ResultSet was empty
         return null;
         
     }
     
+    // Private method for going back
     @FXML private void back(ActionEvent event){
         
         try{
