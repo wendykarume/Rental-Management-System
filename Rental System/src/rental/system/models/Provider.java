@@ -141,7 +141,7 @@ public class Provider{
        
     }
    
-    // Public method that returns a ResultSet obtained from the database
+    // Overloaded Public method that returns a ResultSet obtained from the database
     public ResultSet fetch(String email, String password){
        
         try{
@@ -165,6 +165,43 @@ public class Provider{
             // Setting values parsed in function
             statement.setString(1, email);
             statement.setString(2, password);
+            
+            // Creating a resultset
+            ResultSet rs = statement.executeQuery();
+            
+            // Returning the ResultSet
+            return rs;
+                      
+        }catch(SQLException | ClassNotFoundException se){
+               
+        }
+        
+        return null;
+        
+    }
+    
+    // Overloaded Public method that returns a ResultSet obtained from the database
+    public ResultSet fetch(String email){
+       
+        try{
+            // Catching a connection exception
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
+            // Manually committing data
+            conn.setAutoCommit(false);
+            
+            // Creating a statement to be used while on the connection
+            stmt = conn.createStatement();
+            
+            // Creating statements to be executed
+            String sql = "SELECT Email FROM Provider WHERE (Email = ?)";
+            
+            // Creating a stating that will facilitate parsing of data
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            // Setting values parsed in function
+            statement.setString(1, email);
             
             // Creating a resultset
             ResultSet rs = statement.executeQuery();
