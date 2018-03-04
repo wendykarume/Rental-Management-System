@@ -8,6 +8,7 @@ import java.sql.*;
     Provider class that will handle provider data to and fro the database
 */
 public class Provider{
+    
     // JDBC driver name and database URL
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
     private static final String 
@@ -140,8 +141,8 @@ public class Provider{
        
     }
    
-    // Returns true or false when email and password are parsed in the function
-    public boolean fetch(String email, String password){
+    // Public method that returns a ResultSet obtained from the database
+    public ResultSet fetch(String email, String password){
        
         try{
             // Catching a connection exception
@@ -155,51 +156,28 @@ public class Provider{
             stmt = conn.createStatement();
             
             // Creating statements to be executed
-            String sql = "SELECT Email, Password FROM Provider";
+            String sql = "SELECT Email, Password FROM Provider WHERE "
+                    + "((Email = ?) && (Password = ?))";
+            
+            // Creating a stating that will facilitate parsing of data
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            // Setting values parsed in function
+            statement.setString(1, email);
+            statement.setString(2, password);
             
             // Creating a resultset
-            ResultSet rs = stmt.executeQuery(sql);
+            ResultSet rs = statement.executeQuery();
             
-            String mail = rs.getString("Email");
-            String pass = rs.getString("Password");
-            
-            if ((mail == null ? email == null : mail.equals(email)) && 
-                    (pass == null ? password == null : pass.equals(password))){
-
-                    return true;
-                    
-            }
+            // Returning the ResultSet
+            return rs;
                       
         }catch(SQLException | ClassNotFoundException se){
-            
-            
-        }finally{
-            // Close connection if ...
-            try{
-                // there is no statement
-                if(stmt != null)
-                    // Close connection
-                    conn.close();
-                
-            }catch(SQLException se){
-           
-            }
-            try{
-                // there are no database credentials
-                if(conn != null)
-                    // Close connection
-                    conn.close();
-           
-            }catch(SQLException se){
                
-            }
-        
         }
         
-        return false;
+        return null;
         
     }
     
 }
-
-
