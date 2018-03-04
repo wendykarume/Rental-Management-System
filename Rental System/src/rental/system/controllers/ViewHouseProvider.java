@@ -31,14 +31,15 @@ import rental.system.models.House;
 import rental.system.models.HouseData;
 
 /*
-    Class that enables the provider to view houses present
+    Class that enables the provider to view houses present. Implements 
+    Initializable class that enables it to override Initialize method that will
+    set up values before display
 */
 
 public class ViewHouseProvider implements Initializable{
     
     // FXML objects to be used
     @FXML private AnchorPane view_house_provider;
-    FXMLLoader loader = new FXMLLoader();
     @FXML private TableView<HouseData> house_view;
     @FXML private TableColumn<HouseData, Integer> house_id;
     @FXML private TableColumn<HouseData, String> house_type;
@@ -48,11 +49,18 @@ public class ViewHouseProvider implements Initializable{
     
     // Class objects to be used
     House house = new House();
+    
+    // Observable list to be used
+    private ObservableList<HouseData> housedata = 
+            FXCollections.observableArrayList();
 
+    // Overriden method that will load table data before display
     @Override
     public void initialize(URL location, ResourceBundle resources){
      
         try {
+            // Setting the cell value corresponding to the data model defined at
+            // HouseData class
             house_id.setCellValueFactory(
                     new PropertyValueFactory<>("houseid"));
             house_type.setCellValueFactory(
@@ -63,7 +71,9 @@ public class ViewHouseProvider implements Initializable{
                     new PropertyValueFactory<>("houseprice"));
             house_status.setCellValueFactory(
                     new PropertyValueFactory<>("housestatus"));
-
+            
+            // Setting the values obtained from the function getHouses() into 
+            // the table
             house_view.setItems(getHouses());
             
         } catch (SQLException ex) {
@@ -73,15 +83,17 @@ public class ViewHouseProvider implements Initializable{
         
     }
     
+    // Private method that returns an observable list with data obtained
+    // corresponding with the data model defined at HouseData class
     private ObservableList<HouseData> getHouses() throws SQLException{
         
-        ObservableList<HouseData> housedata = 
-                FXCollections.observableArrayList();
-        
+        // Getting the ResultSet from the database containing all the houses
         ResultSet rs = house.allHouses();
         
+        // Making sure the ResultSet is not null or it would raise an 
+        // SQLException
         if (rs != null){
-            
+            // Looping through the ResultSet getting values by column name
             while (rs.next()){
 
                 int id = rs.getInt("HouseID");
@@ -89,18 +101,21 @@ public class ViewHouseProvider implements Initializable{
                 String place = rs.getString("HouseLocation");
                 int price = rs.getInt("HousePrice");
                 String status = rs.getString("HouseStatus");
-
+                
+                // Adding the values obtained into the observable list
                 housedata.add(new HouseData(id, type, place, price, status));
 
-            }
-            
+            }  
+            // Returning the list with values
             return housedata;
             
         }
+        // Returning null as the ResultSet was empty
         return null;
     
     }
     
+    // Private method that displays the addHouse window
     @FXML private void addHouse(ActionEvent event){
         
         try{
@@ -117,6 +132,7 @@ public class ViewHouseProvider implements Initializable{
         
     }
     
+    // Private method for going back
     @FXML private void back(ActionEvent event){
         
         try{
