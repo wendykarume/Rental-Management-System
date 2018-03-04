@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 // Application imports
 import rental.system.models.Provider;
 import rental.system.models.User;
+import rental.system.sources.BCrypt;
 
 /*
     Login class that facilitates the login of users and providers
@@ -42,6 +43,9 @@ public class Login {
     @FXML private JFXTextField email;
     @FXML private JFXPasswordField password;
     @FXML private JFXRadioButton userbutton, providerbutton;
+    
+    // Checking hash
+    private String hashed;
     
     // Private function that validates and redirects to the right dashboard
     @FXML private void toDash(ActionEvent event) throws Exception {
@@ -70,6 +74,7 @@ public class Login {
                 // Clearing email
                 email.clear();
                 
+            // Making sure the email has the @ symbol
             }else if (!email.getText().contains("@")) {
                                 
                 // Alerting upon invalid email
@@ -87,16 +92,18 @@ public class Login {
                 // Clearing password
                 password.clear();
                 
-            // Making sure email has the @ symbol
-                
             }else{
                 // Vailidating from database
                 
                 // Alerting that credetials are not in database or invalid
                 if (userbutton.isSelected()){
+                    // Checking password hash
+                    hashed = BCrypt.hashpw(password.getText(), 
+                            BCrypt.gensalt(12));
+                    
                     // Getting User data from database
                     ResultSet user_rs = 
-                        user.fetch(email.getText(), password.getText());
+                        user.fetch(email.getText(), hashed);
                     
                     if (user_rs == null){
                         // Setting texts for alerting the user
@@ -122,9 +129,13 @@ public class Login {
                     }
                 
                 }else if(providerbutton.isSelected()){
+                    // Checking password hash
+                    hashed = BCrypt.hashpw(password.getText(), 
+                            BCrypt.gensalt(12));
+                    
                     // Getting Provider data from database
                     ResultSet provider_rs = 
-                        provider.fetch(email.getText(), password.getText());
+                        provider.fetch(email.getText(), hashed);
                     
                     if (provider_rs == null){
                         // Setting alert texts
