@@ -25,7 +25,7 @@ public class ProviderDash{
         
         try{
             AnchorPane pane = FXMLLoader.load(getClass().
-                        getResource("/rental/system/views/viewhouseprovider.fxml"));
+                    getResource("/rental/system/views/viewhouseprovider.fxml"));
             provider_dash.getChildren().setAll(pane);
             
         }catch (IOException e){
