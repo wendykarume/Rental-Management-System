@@ -37,6 +37,7 @@ public class ProviderDash{
         
     }
     
+    // Private method for going back
     @FXML private void back(ActionEvent Event){
         
         try{
@@ -53,6 +54,7 @@ public class ProviderDash{
         
     }
     
+    // Method that redirects to the Stats window
     @FXML private void stats(ActionEvent event){
         
         try{
