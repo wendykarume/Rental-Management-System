@@ -52,27 +52,6 @@ public class User{
             // Revert
             conn.rollback();
             
-        }finally{
-            // Close connection if ...
-            try{
-                // there is no statement
-                if(stmt != null)
-                    // Close connection
-                    conn.close();
-                
-            }catch(SQLException se){
-           
-            }
-            try{
-                // there are no database credentials
-                if(conn != null)
-                    // Close connection
-                    conn.close();
-           
-            }catch(SQLException se){
-               
-            }
-        
         }
 
     }
@@ -115,27 +94,6 @@ public class User{
             // Revert
             conn.rollback();
             
-        }finally{
-            // Close connection if ...
-            try{
-                // there is no statement
-                if(stmt != null)
-                    // Close connection
-                    conn.close();
-                
-            }catch(SQLException se){
-           
-            }
-            try{
-                // there are no database credentials
-                if(conn != null)
-                    // Close connection
-                    conn.close();
-           
-            }catch(SQLException se){
-               
-            }
-        
         }       
        
     }
@@ -214,6 +172,30 @@ public class User{
         }
         
         return null;
+        
+    }
+    
+    // Public method for closing the connection
+    public void closeConnection(){    
+        // Close connection if ...
+        try{
+            // there is no statement
+            if(stmt != null)
+                // Close connection
+                conn.close();
+
+        }catch(SQLException se){
+
+        }
+        try{
+            // there are no database credentials
+            if(conn != null)
+                // Close connection
+                conn.close();
+
+        }catch(SQLException se){
+
+        }
         
     }
 

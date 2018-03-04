@@ -42,27 +42,6 @@ public class House {
             
            e.printStackTrace();
            
-        }finally{
-            // Close connection if ...
-            try{
-                // there is no statement
-                if(stmt != null)
-                    // Close connection
-                    conn.close();
-                
-            }catch(SQLException se){
-           
-            }
-            try{
-                // there are no database credentials
-                if(conn != null)
-                    // Close connection
-                    conn.close();
-           
-            }catch(SQLException se){
-               
-            }
-        
         }
 
     }
@@ -107,27 +86,6 @@ public class House {
             // Revert
             conn.rollback();
             
-        }finally{
-            // Close connection if ...
-            try{
-                // there is no statement
-                if(stmt != null)
-                    // Close connection
-                    conn.close();
-                
-            }catch(SQLException se){
-           
-            }
-            try{
-                // there are no database credentials
-                if(conn != null)
-                    // Close connection
-                    conn.close();
-           
-            }catch(SQLException se){
-               
-            }
-        
         }
        
    }
@@ -195,6 +153,30 @@ public class House {
         }
         // Returning nothing
         return null;
+        
+    }
+    
+    // Public method for closing the connection
+    public void closeConnection(){    
+        // Close connection if ...
+        try{
+            // there is no statement
+            if(stmt != null)
+                // Close connection
+                conn.close();
+
+        }catch(SQLException se){
+
+        }
+        try{
+            // there are no database credentials
+            if(conn != null)
+                // Close connection
+                conn.close();
+
+        }catch(SQLException se){
+
+        }
         
     }
            
