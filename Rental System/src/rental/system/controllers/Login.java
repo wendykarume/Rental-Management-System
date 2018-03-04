@@ -70,6 +70,14 @@ public class Login {
                 // Clearing email
                 email.clear();
                 
+            }else if (!email.getText().contains("@")) {
+                                
+                // Alerting upon invalid email
+                mail.setText("Invalid email");
+                
+                // Clearing email
+                email.clear();
+                
             // Setting suitable length for password
             }else if((password.getLength() == 0) || (password.getLength() < 8)){
                               
@@ -80,73 +88,68 @@ public class Login {
                 password.clear();
                 
             // Making sure email has the @ symbol
-            }else if (!email.getText().contains("@")) {
-                                
-                // Alerting upon invalid email
-                mail.setText("Invalid email");
-                
-                // Clearing email
-                email.clear();
                 
             }else{
                 // Vailidating from database
                 
-                // Getting User data from database
-                ResultSet user_rs = 
+                // Alerting that credetials are not in database or invalid
+                if (userbutton.isSelected()){
+                    // Getting User data from database
+                    ResultSet user_rs = 
                         user.fetch(email.getText(), password.getText());
-                
-                // Getting Provider data from database
-                ResultSet provider_rs = 
-                        provider.fetch(email.getText(), password.getText());
-                
-                // Alerting that credetials are not in database or invalid
-                if ((userbutton.isSelected()) && user_rs == null){
-                                        
-                    // Setting texts for alerting the user
-                    log_in.setText("Have you signed up?");
-                    mail.setText("Invalid Email");
-                    pass.setText("Invalid Password");
                     
-                    // Deselecting the radio buttons
-                    userbutton.setSelected(false);
-                    providerbutton.setSelected(false);
-                    
-                    // Clearing fields
-                    email.clear();
-                    password.clear();
-                
-                // Alerting that credetials are not in database or invalid
-                }else if((providerbutton.isSelected()) && provider_rs == null){
-                                       
-                    // Setting alert texts
-                    log_in.setText("Have you signed up?");
-                    mail.setText("Invalid Email");
-                    pass.setText("Invalid Password");
-                    
-                    // Deselecting the radio buttons
-                    userbutton.setSelected(false);
-                    providerbutton.setSelected(false);
-                    
-                    // Clearing fields
-                    email.clear();
-                    password.clear();
-                    
-                // Proceeding to UserDash upon all cases being met
-                } else if ((userbutton.isSelected()) && (user_rs != null)){
-                    
-                    // Run code and catch exception if there
-                    AnchorPane pane = FXMLLoader.load(getClass().
+                    if (user_rs == null){
+                        // Setting texts for alerting the user
+                        log_in.setText("Have you signed up?");
+                        mail.setText("Invalid Email");
+                        pass.setText("Invalid Password");
+
+                        // Deselecting the radio buttons
+                        userbutton.setSelected(false);
+                        providerbutton.setSelected(false);
+
+                        // Clearing fields
+                        email.clear();
+                        password.clear();
+                        
+                    // Proceeding to UserDash upon all conditions being met
+                    } else {
+                        // Display window
+                        AnchorPane pane = FXMLLoader.load(getClass().
                             getResource("/rental/system/views/userdash.fxml"));
-                    login.getChildren().setAll(pane);
-                
-                // Proceeding to ProviderDash upon all cases being met
-                }else if((providerbutton.isSelected()) && provider_rs != null){
+                        login.getChildren().setAll(pane);
                     
-                    // Catch exception if present
-                    AnchorPane pane = FXMLLoader.load(getClass().
-                        getResource("/rental/system/views/providerdash.fxml"));
-                    login.getChildren().setAll(pane);
+                    }
                 
+                }else if(providerbutton.isSelected()){
+                    // Getting Provider data from database
+                    ResultSet provider_rs = 
+                        provider.fetch(email.getText(), password.getText());
+                    
+                    if (provider_rs == null){
+                        // Setting alert texts
+                        log_in.setText("Have you signed up?");
+                        mail.setText("Invalid Email");
+                        pass.setText("Invalid Password");
+
+                        // Deselecting the radio buttons
+                        userbutton.setSelected(false);
+                        providerbutton.setSelected(false);
+
+                        // Clearing fields
+                        email.clear();
+                        password.clear();
+                    
+                    // Proceeding to ProviderDash upon all cases being met
+                    }else{
+                        // Catch exception if present
+                        AnchorPane pane = FXMLLoader.load(getClass().
+                        getResource("/rental/system/views/providerdash.fxml"));
+                        
+                        login.getChildren().setAll(pane);   
+                    
+                    }
+                                    
                 // Alerting that a miscellaneous error occurred
                 }else{
                     
