@@ -1,29 +1,26 @@
+// Class object
 package rental.system.controllers;
 
+// Exception handling
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+// JavaFX imports
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
-public class Alert implements Initializable {
-   
-    
+/*
+    Alert class that will alert upon erraneous actions
+*/
+public class Alert{
+
+    // FXML objects to be used
     @FXML private AnchorPane alert;
     
-    
-    // Exit function
-    @FXML private void exit(ActionEvent event){
-        
-        System.exit(0);
-        
-    }
-    
+    // Private function for going back
     @FXML private void back(ActionEvent event){
         
         try{
@@ -40,12 +37,12 @@ public class Alert implements Initializable {
         }
         
     }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
     
-        //code
+    // Exit function
+    @FXML private void exit(ActionEvent event){
         
-    }  
+        System.exit(0);
+        
+    }
     
 }
