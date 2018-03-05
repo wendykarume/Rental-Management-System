@@ -52,15 +52,21 @@ public class Stats implements Initializable {
             // Get values from database in a ResultSet
             ResultSet rs = house.occupiedHouses();
             
-            // Loop through the ResultSet, getting values by columns
-            while (rs.next()){
+            if (rs != null){
                 
-                String type = rs.getString("HouseType");
-                int price = rs.getInt("HousePrice");
-                
-                // Adding values obtained to the list
-                piechartdata.add(new PieChart.Data(type, price));
-                
+                // Loop through the ResultSet, getting values by columns
+                while (rs.next()){
+
+                    String type = rs.getString("HouseType");
+                    int price = rs.getInt("HousePrice");
+
+                    // Adding values obtained to the list
+                    piechartdata.add(new PieChart.Data(type, price));
+                    
+                    // Close connection
+                    house.closeConnection();
+                    
+                }
             }
             // Closing the connection
             house.closeConnection();
