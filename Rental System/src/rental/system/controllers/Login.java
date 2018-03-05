@@ -84,7 +84,7 @@ public class Login {
                 email.clear();
                 
             // Setting suitable length for password
-            }else if((password.getLength() == 0) || (password.getLength() < 8)){
+            }else if(password.getLength() < 8){
                               
                 // Alerting upon empty password field
                 pass.setText("Length of 8 or more");
