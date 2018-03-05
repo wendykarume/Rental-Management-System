@@ -138,10 +138,54 @@ public class House {
             stmt = conn.createStatement();
             
             // Creating statements to be executed
-            String sql = "SELECT * FROM House WHERE HouseStatus = 'Available'";
+            String sql = "SELECT * FROM House WHERE HouseStatus = 'Occupied'";
             
             // Creating a ResultSet
             ResultSet rs = stmt.executeQuery(sql);
+            
+            // Returning the ResultSet
+            return rs;
+            
+        }catch(SQLException | ClassNotFoundException se){
+            // Revert
+            conn.rollback();
+            
+        }
+        // Returning nothing
+        return null;
+        
+    }
+    
+    // Public method returning houses if they are available
+    public ResultSet ifHouseExists(String type, String place, int price)
+            throws SQLException{
+        
+        try{
+            // Catching a connection exception
+            Class.forName(JDBC_DRIVER);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            
+            // Manually committing data
+            conn.setAutoCommit(false);
+            
+            // Creating a statement to be used while on the connection
+            stmt = conn.createStatement();
+            
+            // Creating statements to be executed
+            String sql = "SELECT HouseType, HouseLocation, HousePrice FROM House"
+                    + " WHERE ((HouseType = ?) &&(HouseLocation = ? ) && "
+                    + "(HousePrice =?))";
+            
+            // Creating a stating that will facilitate parsing of data
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            // Setting values parsed in function
+            statement.setString(1, type);
+            statement.setString(2, place);
+            statement.setInt(3, price);
+            
+            // Creating a resultset
+            ResultSet rs = statement.executeQuery();
             
             // Returning the ResultSet
             return rs;
