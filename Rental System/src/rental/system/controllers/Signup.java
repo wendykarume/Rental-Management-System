@@ -65,7 +65,7 @@ public class Signup{
                 
                 // Setting messge for user
                 radio_check.setText("Select to proceed");
-            
+                
             // Making sure the first name is not empty upon submission
             } else if (first_name.getLength() == 0){
                 
