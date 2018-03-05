@@ -18,12 +18,12 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="type" focusColor="#3b6cff" layoutX="370.0" layoutY="92.0" prefHeight="39.0" prefWidth="304.0" promptText="House Type" unFocusColor="#ffff37">
+      <JFXTextField fx:id="type" focusColor="#3b6cff" layoutX="370.0" layoutY="71.0" prefHeight="39.0" prefWidth="304.0" promptText="House Type" unFocusColor="#ffff37">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="place" focusColor="#3b6cff" layoutX="370.0" layoutY="159.0" prefHeight="39.0" prefWidth="304.0" promptText="House Location" unFocusColor="#ffff37">
+      <JFXTextField fx:id="place" focusColor="#3b6cff" layoutX="370.0" layoutY="148.0" prefHeight="39.0" prefWidth="304.0" promptText="House Location" unFocusColor="#ffff37">
          <font>
             <Font size="15.0" />
          </font>
@@ -33,7 +33,7 @@
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="status" focusColor="#3b6cff" layoutX="370.0" layoutY="298.0" prefHeight="39.0" prefWidth="304.0" promptText="House Status" unFocusColor="#ffff37">
+      <JFXTextField fx:id="status" focusColor="#3b6cff" layoutX="370.0" layoutY="307.0" prefHeight="39.0" prefWidth="304.0" promptText="House Status" unFocusColor="#ffff37">
          <font>
             <Font size="15.0" />
          </font>
@@ -48,5 +48,30 @@
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <Label fx:id="ty_pe" layoutX="370.0" layoutY="111.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="locale" layoutX="370.0" layoutY="190.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="cost" layoutX="370.0" layoutY="269.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="availability" layoutX="370.0" layoutY="348.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="pro_vide" layoutX="14.0" layoutY="82.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
