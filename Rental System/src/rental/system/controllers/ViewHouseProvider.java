@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.net.URL;
 
 // JavaFX imports
+import com.jfoenix.controls.JFXComboBox;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 
 // Project Imports
@@ -46,12 +48,13 @@ public class ViewHouseProvider implements Initializable{
     @FXML private TableColumn<HouseData, String> house_location;
     @FXML private TableColumn<HouseData, Integer> house_price;
     @FXML private TableColumn<HouseData, String> house_status;
-    
+    @FXML private JFXComboBox housestatus;
+    @FXML private Label select, choose;
     // Class objects to be used
     House house = new House();
     
     // Observable list to be used
-    private ObservableList<HouseData> housedata = 
+    private final ObservableList<HouseData> housedata = 
             FXCollections.observableArrayList();
 
     // Overriden method that will load table data before display
@@ -93,6 +96,9 @@ public class ViewHouseProvider implements Initializable{
         // Making sure the ResultSet is not null or it would raise an 
         // SQLException
         if (rs != null){
+            // Clearing observable list to store new values
+            housedata.clear();
+            
             // Looping through the ResultSet getting values by column name
             while (rs.next()){
 
@@ -101,7 +107,7 @@ public class ViewHouseProvider implements Initializable{
                 String place = rs.getString("HouseLocation");
                 int price = rs.getInt("HousePrice");
                 String status = rs.getString("HouseStatus");
-                
+  
                 // Adding the values obtained into the observable list
                 housedata.add(new HouseData(id, type, place, price, status));
 
@@ -136,6 +142,127 @@ public class ViewHouseProvider implements Initializable{
             
         }
         
+    }
+    
+    // Private method that will facilitate the update of houses by provider
+    @FXML private void updateHouse(ActionEvent event) throws SQLException{
+        // Clearing alert
+        select.setText("");
+        choose.setText("");
+        
+        if (housestatus.getSelectionModel().isEmpty() == true){
+            // Alerting provider
+            choose.setText("House status required");
+            
+        }else if(house_view.getSelectionModel().isSelected(house_view.getSelectionModel().getSelectedIndex()) == false){
+            // Alerting the provider
+            select.setText("Click house to select");
+            
+        }else{
+            // Getting value of the status from the radio button
+            String h_status = housestatus.getValue().toString();
+            
+            // Getting the value of selected items
+            String h_type = house_view.getSelectionModel().getSelectedItem().getHousetype();
+            String h_place = house_view.getSelectionModel().getSelectedItem().getHouselocation();
+            int h_price = house_view.getSelectionModel().getSelectedItem().getHouseprice();
+
+            // Updating on the database
+            house.updateHouseStatus(h_status, h_type, h_place, h_price);
+
+            // Closing connection
+            house.closeConnection();
+            
+            // Clearing window if any errors were present
+            select.setText("");
+            choose.setText("");
+            house_view.getSelectionModel().clearSelection();
+            housestatus.getSelectionModel().clearSelection();
+            // Clearing observable list to store new values
+            housedata.clear();
+            
+            // Refreshing the table from values in the database
+            try {
+                // Setting the cell value corresponding to the data model defined at
+                // HouseData class
+                house_id.setCellValueFactory(
+                        new PropertyValueFactory<>("houseid"));
+                house_type.setCellValueFactory(
+                        new PropertyValueFactory<>("housetype"));
+                house_location.setCellValueFactory(
+                        new PropertyValueFactory<>("houselocation"));
+                house_price.setCellValueFactory(
+                        new PropertyValueFactory<>("houseprice"));
+                house_status.setCellValueFactory(
+                        new PropertyValueFactory<>("housestatus"));
+
+                // Setting the values obtained from the function getHouses() into 
+                // the table    
+                house_view.setItems(getHouses());
+
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewHouseProvider.class.getName()).
+                        log(Level.SEVERE, null, ex);
+            }
+            
+        }  
+    }
+    
+    // Private method that will facilitate the update of houses by provider
+    @FXML private void deleteHouse(ActionEvent event) throws SQLException{
+        // Clearing alert
+        select.setText("");
+        
+        if (house_view.getSelectionModel().isSelected(house_view.getSelectionModel().getSelectedIndex()) == false){
+            // Alerting the provider
+            select.setText("Click house to select");
+            
+        }else{
+            // Getting the value of selected items
+            String h_type = house_view.getSelectionModel().getSelectedItem().getHousetype();
+            String h_place = house_view.getSelectionModel().getSelectedItem().getHouselocation();
+            int h_price = house_view.getSelectionModel().getSelectedItem().getHouseprice();
+            String h_status = house_view.getSelectionModel().getSelectedItem().getHousestatus();
+            
+            // Deleting on the database
+            house.deleteHouse(h_type, h_place, h_price, h_status);
+
+            // Closing connection
+            house.closeConnection();
+            
+            // Clearing window if any errors were present
+            select.setText("");
+            choose.setText("");
+            house_view.getSelectionModel().clearSelection();
+            
+            // Clearing observable list to store new values
+            housedata.clear();
+            
+            // Refreshing the table from values in the database
+            try {
+                // Setting the cell value corresponding to the data model defined at
+                // HouseData class
+                house_id.setCellValueFactory(
+                        new PropertyValueFactory<>("houseid"));
+                house_type.setCellValueFactory(
+                        new PropertyValueFactory<>("housetype"));
+                house_location.setCellValueFactory(
+                        new PropertyValueFactory<>("houselocation"));
+                house_price.setCellValueFactory(
+                        new PropertyValueFactory<>("houseprice"));
+                house_status.setCellValueFactory(
+                        new PropertyValueFactory<>("housestatus"));
+
+                // Setting the values obtained from the function getHouses() into 
+                // the table    
+                house_view.setItems(getHouses());
+
+            } catch (SQLException ex) {
+                Logger.getLogger(ViewHouseProvider.class.getName()).
+                        log(Level.SEVERE, null, ex);
+            }
+            
+        }  
     }
     
     // Private method for going back
