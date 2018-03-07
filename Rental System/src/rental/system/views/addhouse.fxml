@@ -1,51 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.FXCollections?>
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import java.lang.String?>
 
 <AnchorPane fx:id="add_house" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.AddHouse">
    <children>
       <JFXButton buttonType="RAISED" layoutX="21.0" layoutY="426.0" onAction="#exit" prefHeight="44.0" prefWidth="120.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </JFXButton>
       <Label layoutX="253.0" layoutY="14.0" text="Provide House" textFill="#901212">
          <font>
-            <Font size="25.0" />
+            <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="type" focusColor="#3b6cff" layoutX="370.0" layoutY="71.0" prefHeight="39.0" prefWidth="304.0" promptText="House Type" unFocusColor="#ffff37">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="place" focusColor="#3b6cff" layoutX="370.0" layoutY="148.0" prefHeight="39.0" prefWidth="304.0" promptText="House Location" unFocusColor="#ffff37">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="price" focusColor="#3b6cff" layoutX="370.0" layoutY="231.0" prefHeight="39.0" prefWidth="304.0" promptText="House Price" unFocusColor="#ffff37">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="status" focusColor="#3b6cff" layoutX="370.0" layoutY="307.0" prefHeight="39.0" prefWidth="304.0" promptText="House Status" unFocusColor="#ffff37">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXTextField>
+      <JFXTextField fx:id="price" focusColor="#3b6cff" layoutX="370.0" layoutY="231.0" prefHeight="39.0" prefWidth="304.0" promptText="House Price" unFocusColor="#ffff37" />
     <JFXButton buttonType="RAISED" layoutX="376.0" layoutY="421.0" onAction="#add" prefHeight="50.0" prefWidth="304.0" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </JFXButton>
       <JFXButton buttonType="RAISED" layoutX="26.0" layoutY="326.0" onAction="#back" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: blue;" text="BACK" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font size="18.0" />
          </font>
       </JFXButton>
       <Label fx:id="ty_pe" layoutX="370.0" layoutY="111.0" prefHeight="29.0" prefWidth="304.0" textFill="RED">
@@ -73,5 +57,44 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <JFXComboBox fx:id="type" focusColor="#3b6cff" layoutX="370.0" layoutY="82.0" prefHeight="29.0" prefWidth="304.0" promptText="Select House Type" unFocusColor="#ffff37">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Mansion"/>
+                    <String fx:value="Mansionette"/>
+                    <String fx:value="Cottage"/>
+                    <String fx:value="Villa"/>
+                    <String fx:value="5+ - Bedroom"/>
+                    <String fx:value="4 - Bedroom"/>
+                    <String fx:value="3 - Bedroom"/>
+                    <String fx:value="2 - Bedroom"/>
+                    <String fx:value="1 - Bedroom"/>
+                    <String fx:value="BedSitter"/>
+                </FXCollections>
+            </items>
+      </JFXComboBox>
+      <JFXComboBox fx:id="place" focusColor="#3b6cff" layoutX="370.0" layoutY="161.0" prefHeight="29.0" prefWidth="304.0" promptText="Select House Location" unFocusColor="#ffff37" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Nairobi"/>
+                    <String fx:value="Machakos"/>
+                    <String fx:value="Kisumu"/>
+                    <String fx:value="Kajiado"/>
+                    <String fx:value="Kitui"/>
+                    <String fx:value="Mombasa"/>
+                    <String fx:value="Nakuru"/>
+                    <String fx:value="Eldoret"/>
+                    <String fx:value="Kitale"/>
+                    <String fx:value="Kiambu"/>
+                </FXCollections>
+            </items>
+      </JFXComboBox>
+      <JFXComboBox fx:id="status" focusColor="#3b6cff" layoutX="370.0" layoutY="312.0" prefHeight="29.0" prefWidth="304.0" promptText="Select House Status" unFocusColor="#ffff37" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Available"/>
+                </FXCollections>
+            </items>
+      </JFXComboBox>
    </children>
 </AnchorPane>

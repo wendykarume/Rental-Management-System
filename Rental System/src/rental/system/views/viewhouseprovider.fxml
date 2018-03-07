@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,34 +12,83 @@
 
 <AnchorPane fx:id="view_house_provider" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseProvider">
    <children>
-      <TableView fx:id="house_view" layoutX="-1.0" layoutY="94.0" prefHeight="283.0" prefWidth="700.0">
+      <TableView fx:id="house_view" layoutY="85.0" prefHeight="246.0" prefWidth="700.0" style="-fx-background-color: silver;">
         <columns>
-          <TableColumn fx:id="house_id" prefWidth="89.0" text="House ID" />
-          <TableColumn fx:id="house_type" prefWidth="141.0" text="House Type" />
-          <TableColumn fx:id="house_location" prefWidth="152.0" text="House Location" />
-          <TableColumn fx:id="house_price" minWidth="0.0" prefWidth="154.0" text="House Price" />
-          <TableColumn fx:id="house_status" minWidth="0.0" prefWidth="197.0" text="House Status" />
+          <TableColumn fx:id="house_id" prefWidth="64.0" text="House ID" />
+          <TableColumn fx:id="house_type" prefWidth="137.0" text="House Type" />
+          <TableColumn fx:id="house_location" prefWidth="136.0" text="House Location" />
+          <TableColumn fx:id="house_price" minWidth="0.0" prefWidth="205.0" text="House Price" />
+          <TableColumn fx:id="house_status" minWidth="0.0" prefWidth="248.0" text="House Status" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Label layoutX="265.0" layoutY="35.0" text="House View" textFill="#b21919">
+      <Label layoutX="267.0" layoutY="14.0" text="House View" textFill="#b21919">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <JFXButton layoutX="28.0" layoutY="421.0" onAction="#exit" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="556.0" layoutY="442.0" onAction="#back" prefHeight="44.0" prefWidth="101.0" style="-fx-background-color: orange;" text="BACK" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="568.0" layoutY="421.0" onAction="#back" style="-fx-background-color: orange;" text="BACK" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="556.0" layoutY="379.0" onAction="#addHouse" prefHeight="44.0" prefWidth="101.0" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="304.0" layoutY="421.0" onAction="#addHouse" style="-fx-background-color: green;" text="ADD" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="249.0" layoutY="442.0" onAction="#updateHouse" style="-fx-background-color: blue;" text="UPDATE" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="379.0" onAction="#deleteHouse" prefHeight="44.0" prefWidth="93.0" style="-fx-background-color: red;" text="DELETE" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="housestatus" focusColor="#4369dd" layoutX="249.0" layoutY="379.0" prefHeight="25.0" prefWidth="148.0" promptText="Choose Status" unFocusColor="#ffff37">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Available" />
+                    <String fx:value="Occupied" />
+                    <String fx:value="Ordered" />
+                    <String fx:value="Booked" />
+                    <String fx:value="Pending" />
+                </FXCollections>
+            </items>
+      </JFXComboBox>
+      <Label layoutX="249.0" layoutY="347.0" text="Select House to update status" textFill="#1f2d86">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="347.0" text="Select House to Remove" textFill="#cd1a1a">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="442.0" onAction="#exit" prefHeight="44.0" prefWidth="93.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="556.0" layoutY="347.0" text="Add a new house" textFill="#28652e">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="select" layoutX="267.0" layoutY="50.0" prefHeight="25.0" prefWidth="222.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="choose" layoutX="249.0" layoutY="404.0" prefHeight="25.0" prefWidth="222.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

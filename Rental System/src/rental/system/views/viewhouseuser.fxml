@@ -9,20 +9,23 @@
 
 <AnchorPane fx:id="view_house_user" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ViewHouseUser">
    <children>
-        <TableView fx:id="house_view" layoutX="3.0" layoutY="80.0" prefHeight="356.0" prefWidth="693.0" style="-fx-background-color: silver;">
+        <TableView fx:id="house_view" layoutX="4.0" layoutY="57.0" prefHeight="346.0" prefWidth="693.0" style="-fx-background-color: silver;">
             <columns>
                 <TableColumn fx:id="house_type" prefWidth="141.0" text="House Type" />
                 <TableColumn fx:id="house_location" prefWidth="174.0" text="House Location" />
                 <TableColumn fx:id="house_price" minWidth="0.0" prefWidth="179.0" text="House Price" />
                 <TableColumn fx:id="house_status" minWidth="0.0" prefWidth="197.0" text="House Status" />
             </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
         </TableView>
-      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="447.0" onAction="#exit" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="20.0" layoutY="425.0" onAction="#exit" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="553.0" layoutY="447.0" onAction="#back" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="585.0" layoutY="425.0" onAction="#back" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
@@ -32,5 +35,10 @@
             <Font size="25.0" />
          </font>
       </Label>
+      <JFXButton buttonType="RAISED" layoutX="248.0" layoutY="425.0" onAction="#orderHouse" style="-fx-background-color: blue;" text="Click House To Order" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>
