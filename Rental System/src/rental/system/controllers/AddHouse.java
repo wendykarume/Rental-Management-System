@@ -2,6 +2,7 @@
 package rental.system.controllers;
 
 // Exception handling
+import com.jfoenix.controls.JFXComboBox;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,7 +26,8 @@ public class AddHouse {
 
     // FXML objects to be used
     @FXML private AnchorPane add_house;
-    @FXML private JFXTextField type, place, status, price;
+    @FXML private JFXComboBox type, place, status;
+    @FXML private JFXTextField price;
     @FXML private Label ty_pe, cost, availability, locale, pro_vide;
     
     // Class objects to be used
@@ -42,23 +44,17 @@ public class AddHouse {
         pro_vide.setText("");
         
         try{
-            if (type.getLength() == 0){
+            if (type.getSelectionModel().isEmpty() == true){
                 
                 // Alerting provider
-                ty_pe.setText("Required field");
+                ty_pe.setText("Select house type");
                 pro_vide.setText("All fields required");
                 
-            }else if (place.getLength() == 0){
+            }else if (place.getSelectionModel().isEmpty() == true){
                 
                 // Alerting provider
                 locale.setText("Required field");
-                pro_vide.setText("All fields required");
-                
-            }else if (status.getLength() == 0){
-                
-                // Alerting provider
-                availability.setText("Required field");
-                pro_vide.setText("All fields required");
+                pro_vide.setText("Select location of house");
                 
             }else if (price.getLength() == 0){
                 
@@ -73,15 +69,20 @@ public class AddHouse {
                 
                 // Clearing the field
                 price.clear();
+            
+            }else if (status.getSelectionModel().isEmpty() == true){
                 
-            } else {
+                // Alerting provider
+                availability.setText("Required field");
+                pro_vide.setText("Select the default status");
                 
-                ResultSet rs = house.ifHouseExists(type.getText(), 
-                        place.getText(), Integer.parseInt(price.getText()));
-                // Creating database tables
+            }else{
                 
-                if (rs != null){
-                    
+                int h_cost = Integer.parseInt(price.getText());
+                
+                ResultSet rs = house.ifHouseExists(type.getValue().toString(), 
+                        place.getValue().toString(), h_cost);
+                if (rs == null){
                     // Alerting the provider
                     pro_vide.setText("House Already Exists");
                     ty_pe.setText("Already Exists");
@@ -89,19 +90,23 @@ public class AddHouse {
                     cost.setText("Already Exists");
                     
                     // Clearing fields
-                    type.clear();
-                    place.clear();
+                    type.getSelectionModel().clearSelection();
+                    place.getSelectionModel().clearSelection();
                     price.clear();
                     
                     // Closing connection
                     house.closeConnection();
                     
                 } else{
+                    // Creating database tables
                     house.create();
-
+                    
+                    int h_price = Integer.parseInt(price.getText());
+                    
                     // Inserting data into database
-                    house.insert(type.getText(), place.getText(), status.getText(), 
-                            Integer.parseInt(price.getText()));
+                    house.insert(type.getValue().toString(), 
+                            place.getValue().toString(), status.getValue().toString(), 
+                            h_price);
 
                     // Closing connection
                     house.closeConnection();
