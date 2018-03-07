@@ -160,31 +160,37 @@ public class House {
     }
     
     // Public method returning houses if they are available
-    public ResultSet occupiedHouses() throws SQLException{
+    public ResultSet statsHouseSelected(String status) throws SQLException{
         
         try{
             // Catching a connection exception
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            
-            // Manually committing data
             conn.setAutoCommit(false);
             
             // Creating a statement to be used while on the connection
             stmt = conn.createStatement();
             
             // Creating statements to be executed
-            String sql = "SELECT * FROM House WHERE HouseStatus = 'Occupied'";
+            String sql = "SELECT HousePrice, HouseType FROM House WHERE HouseStatus = ?";
             
-            // Creating a ResultSet
-            ResultSet rs = stmt.executeQuery(sql);
+            // Creating a stating that will facilitate parsing of data
+            PreparedStatement statement = conn.prepareStatement(sql);
+            
+            // Setting values parsed in function
+            statement.setString(1, status);
+            
+            // Creating a resultset
+            ResultSet rs = statement.executeQuery();
+            
+            conn.commit();
             
             // Returning the ResultSet
             if (rs == null){
                 return null;
+            }else{
+                return rs;
             }
-            return rs;
-            
         }catch(SQLException | ClassNotFoundException se){
             // Revert
             conn.rollback();
