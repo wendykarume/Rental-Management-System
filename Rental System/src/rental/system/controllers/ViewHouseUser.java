@@ -49,7 +49,7 @@ public class ViewHouseUser implements Initializable{
     House house = new House();
     
     // Observable list to be used
-    private ObservableList<HouseData> housedata = 
+    private final ObservableList<HouseData> housedata = 
             FXCollections.observableArrayList();
 
     // Overriden method that starts up the table with values already set
@@ -82,7 +82,7 @@ public class ViewHouseUser implements Initializable{
     private ObservableList<HouseData> getHouses() throws SQLException{
         
         // ResultSet with houses obtained from the database
-        ResultSet rs = house.allHouses();
+        ResultSet rs = house.availableHouses();
         
         // Making sure the ResultSet is not null that will throw an SQLException
         if (rs != null){
@@ -104,12 +104,35 @@ public class ViewHouseUser implements Initializable{
             
             // Returning the observable list after looping is done
             return housedata;
-        }        
+        }
         // Closing connection
         house.closeConnection();
         
         // Returning null as the ResultSet was empty
         return null;
+        
+    }
+    
+    // Private method that will facilitate the ordering of houses by the user
+    @FXML private void orderHouse(ActionEvent event) throws SQLException{
+        
+        ObservableList <HouseData> houseSelected, allHouses;
+        allHouses = house_view.getItems();
+        houseSelected = house_view.getSelectionModel().getSelectedItems();
+        
+        String h_status = "Ordered";
+        String h_type = house_view.getSelectionModel().getSelectedItem().getHousetype();
+        String h_place = house_view.getSelectionModel().getSelectedItem().getHouselocation();
+        int h_price = house_view.getSelectionModel().getSelectedItem().getHouseprice();
+        
+        // Removing item from the table view
+        houseSelected.forEach(allHouses::remove);
+        
+        // Updating on the database
+        house.updateHouseStatus(h_status, h_type, h_place, h_price);
+        
+        // Closing connection
+        house.closeConnection();
         
     }
     
