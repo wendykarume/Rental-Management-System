@@ -63,10 +63,9 @@ public class Stats implements Initializable {
                     // Adding values obtained to the list
                     piechartdata.add(new PieChart.Data(type, price));
                     
-                    // Close connection
-                    house.closeConnection();
-                    
                 }
+                // Close connection
+                house.closeConnection();
             }
             // Closing the connection
             house.closeConnection();
