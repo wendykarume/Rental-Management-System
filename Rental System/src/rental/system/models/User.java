@@ -127,6 +127,9 @@ public class User{
             ResultSet rs = statement.executeQuery();
             
             // Returning the ResultSet
+            if (rs == null){
+                return null;
+            }
             return rs;
                       
         }catch(SQLException | ClassNotFoundException se){
@@ -165,6 +168,9 @@ public class User{
             ResultSet rs = statement.executeQuery();
             
             // Returning the ResultSet
+            if (rs == null){
+                return null;
+            }
             return rs;
                       
         }catch(SQLException | ClassNotFoundException se){
