@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="stats" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.Stats">
    <children>
-      <PieChart fx:id="piechart" layoutX="18.0" layoutY="14.0" prefHeight="412.0" prefWidth="665.0" title="Revenue - Occupied Rentals" />
-      <JFXButton buttonType="RAISED" layoutX="32.0" layoutY="437.0" onAction="#exit" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+      <PieChart fx:id="piechart" prefHeight="426.0" prefWidth="700.0" title="Nothing to Display. Select House Status and click DISPLAY to Show Statistics." />
+      <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="442.0" onAction="#exit" prefHeight="44.0" prefWidth="72.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="570.0" layoutY="433.0" onAction="#back" prefHeight="44.0" prefWidth="102.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+      <JFXButton buttonType="RAISED" layoutX="606.0" layoutY="442.0" onAction="#back" prefHeight="44.0" prefWidth="80.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </JFXButton>
+      <JFXComboBox fx:id="choose" focusColor="#3d62d3" layoutX="129.0" layoutY="452.0" prefHeight="24.0" prefWidth="240.0" promptText="Choose House Status to display Statistics" unFocusColor="#ffff37">
+          <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Available" />
+                    <String fx:value="Occupied" />
+                    <String fx:value="Ordered" />
+                    <String fx:value="Booked" />
+                    <String fx:value="Pending" />
+                </FXCollections>
+            </items>
+      </JFXComboBox>
+      <JFXButton buttonType="RAISED" layoutX="399.0" layoutY="442.0" onAction="#statsUpdate" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: blue;" text="DISPLAY" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <Label fx:id="select" layoutX="129.0" layoutY="426.0" prefHeight="25.0" prefWidth="240.0" textFill="RED">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
