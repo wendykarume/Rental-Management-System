@@ -118,18 +118,27 @@ public class Signup{
                 ResultSet provider_rs = provider.fetch(email.getText());
                 ResultSet user_rs = user.fetch(email.getText());
                 
+                if ((user_rs != null) || (provider_rs != null)){
+                        
+                    // Alerting the user
+                    mail.setText("Email elready exists, use another");
+                    sign_up.setText("You should Login");
+
+                    // Closing connection
+                    user.closeConnection();
+                }
+                
                 // If user button is selected 
                 if (userbutton.isSelected()){
                     
-                    if ((user_rs != null) || (provider_rs != null)){
+                    if (user_rs != null){
                         
                         // Alerting the user
                         mail.setText("Email elready exists, use another");
                         sign_up.setText("You should Login");
                         
                         // Closing connection
-                        user.closeConnection();
-                        
+                        user.closeConnection();    
                     }else{
                         // Creating database tables
                         user.create();
@@ -154,7 +163,7 @@ public class Signup{
                         
                 }else if(providerbutton.isSelected()){
                     
-                    if ((provider_rs != null) || (user_rs != null)){
+                    if (provider_rs != null){
                         
                         // Alerting the user
                         mail.setText("Email already exists, use another");
