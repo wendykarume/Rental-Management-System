@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="provider_dash" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: silver;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="rental.system.controllers.ProviderDash">
+   <children>
+      <Label layoutX="180.0" layoutY="41.0" style="-fx-background-color: silver;" text="Welcome To your DashBoard" textFill="#974141">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="158.0" onAction="#viewHouse" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: blue;" text="View" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="277.0" layoutY="283.0" onAction="#stats" prefHeight="44.0" prefWidth="111.0" style="-fx-background-color: blue;" text="Stats" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="21.0" layoutY="432.0" onAction="#exit" prefHeight="44.0" prefWidth="100.0" style="-fx-background-color: red;" text="EXIT" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="562.0" layoutY="431.0" onAction="#back" prefHeight="44.0" prefWidth="111.0" style="-fx-background-color: green;" text="BACK" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
