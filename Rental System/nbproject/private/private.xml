@@ -3,13 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/controllers/ViewHouseProvider.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/controllers/Login.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/sources/BCrypt.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/controllers/ProviderDash.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/Controller.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/controllers/Signup.java</file>
-            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/models/Provider.java</file>
+            <file>file:/D:/karume%20wendy/NetBeansProjects/Rental-Management-System/Rental%20System/src/rental/system/controllers/Stats.java</file>
         </group>
     </open-files>
 </project-private>
