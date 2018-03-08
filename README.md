@@ -24,6 +24,10 @@ its own protocols and functions depending with the user input.
 - JavaFX.
 - Java.
 
+#### Hashing
+
+- JBcrypt
+
 ## Getting Started
 
 
@@ -114,6 +118,7 @@ file that has been cloned.
 * [JavaFX](https://docs.oracle.com/javafx/2/overview/jfxpub-overview.htm) - GUI Builder
 * [JFoenix](https://github.com/jfoenixadmin/JFoenix) - Interface Design
 * [MySQL](https://www.mysql.com/) - Database
+* JBCrypt - Hashing API
 
 
 ## Authors
