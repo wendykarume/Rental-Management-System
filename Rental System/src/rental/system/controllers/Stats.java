@@ -149,7 +149,7 @@ public class Stats {
                             t5 = rs.getString("HouseType");
 
                         }
-
+ 
                         if ("4 - Bedroom".equals(type)){
 
                             p6+=price;
@@ -248,24 +248,38 @@ public class Stats {
                     piechartdata.add(new PieChart.Data(t10, p10));
 
                 }
+                
+                if ((!"".equals(t1)) && (p1 != 0) || (!"".equals(t6)) && (p6 != 0)
+                         || (!"".equals(t2)) && (p2 != 0) || (!"".equals(t7)) && (p7 != 0)
+                         || (!"".equals(t3)) && (p3 != 0) || (!"".equals(t8)) && (p8 != 0)
+                         || (!"".equals(t4)) && (p4 != 0) || (!"".equals(t9)) && (p9 != 0)
+                         || (!"".equals(t5)) && (p5 != 0) || (!"".equals(t10)) && (p10 != 0)){
 
-                piechartdata.forEach(data -> data.nameProperty().bind(
-                        Bindings.concat(data.getName(), " : ", "Ksh. " , 
-                                data.pieValueProperty())));
-                // Setting totals
-                total = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10;
-                
-                // Setting title
-                piechart.setTitle(title + "\nTotal Revenue: Ksh. " + total);
-                
-                // Adding the data in the list into the pie chart
-                piechart.setData(piechartdata);
-                
-                // Clear Selected
-                choose.getSelectionModel().clearSelection();
-                
-                // Close connection
-                house.closeConnection();
+                    piechartdata.forEach(data -> data.nameProperty().bind(
+                            Bindings.concat(data.getName(), " : ", "Ksh. " , 
+                                    data.pieValueProperty())));
+                    // Setting totals
+                    total = p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + p9 + p10;
+
+                    // Setting title
+                    piechart.setTitle(title + "\nTotal Revenue: Ksh. " + total);
+
+                    // Adding the data in the list into the pie chart
+                    piechart.setData(piechartdata);
+
+                    // Clear Selected
+                    choose.getSelectionModel().clearSelection();
+
+                    // Close connection
+                    house.closeConnection();
+                }else{
+                    piechartdata.clear();
+                     // Set title
+                    title = "Nothing to Display.\nNo data in " + choose.getValue().toString() + " Houses.";
+                    piechart.setTitle(title);
+                    choose.getSelectionModel().clearSelection();
+                    
+                }
             }else{
                     
                 // clearing data
